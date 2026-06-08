@@ -6,6 +6,38 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- Real, conformant `FAIR.md` manifest for this repository (the project now
+  dogfoods its own convention; validated in CI alongside the example).
+- `CITATION.cff` for machine-readable citation of the fair.md convention.
+- `tools/validate_fair.py` — validates a fair.md file's YAML front matter against
+  the JSON Schema and reports the Section 6 conformance warnings.
+- GitHub Actions workflow (`.github/workflows/validate.yml`) running the validator
+  on every push and pull request.
+
+### Changed
+
+- The fill-in template moved from the repository root to `template/fair.md`, so
+  the root `FAIR.md` can be the project's real manifest. README links updated.
+- `companions` values may now be absolute `http(s)` URLs (for companions hosted on
+  another domain), not only root-relative paths. Schema and SPEC.md §4.1 / §6
+  rule 9 updated accordingly.
+- JSON Schema: `last_reviewed` now also asserts `format: date` in addition to the
+  `YYYY-MM-DD` pattern.
+
+### Fixed
+
+- Repository URLs corrected from the non-existent `Neuronautix/fair-md` to
+  `Neuronautix/FAIR.md` (schema `$id`, template, CHANGELOG).
+- Broken README links: the template link (`fair.md` → `FAIR.md`) and the companion
+  `trust.md` links (previously a broken `../trust-md/` relative path).
+- Dropped `n/a` in the status enum mentioned in the example manifest's prose.
+
+---
+
 ## [0.1] — 2026-06-06
 
 ### Added
@@ -23,4 +55,4 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - README with lineage, 30-second example, and adoption instructions
 - LICENSE (Apache-2.0)
 
-[0.1]: https://github.com/Neuronautix/fair-md/releases/tag/v0.1
+[0.1]: https://github.com/Neuronautix/FAIR.md/releases/tag/v0.1

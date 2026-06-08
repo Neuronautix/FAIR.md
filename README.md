@@ -7,7 +7,7 @@ affordances live.
 
 **Status: v0.1 — proposed convention**
 
-> Companion convention: [trust.md](../trust-md/README.md) — declares the
+> Companion convention: [trust.md](https://github.com/Neuronautix/trust.md) — declares the
 > epistemic status and confidence of the knowledge a repository publishes.
 
 ---
@@ -124,12 +124,16 @@ The canonical `fair.md` for the Neuronautix knowledge base lives at:
 A copy is included in this repository as
 [`examples/neuronautix.fair.md`](examples/neuronautix.fair.md).
 
+This repository also dogfoods the convention on itself: its own conformant
+manifest is at [`FAIR.md`](FAIR.md), and the fill-in template lives at
+[`template/fair.md`](template/fair.md).
+
 ---
 
 ## How to adopt fair.md
 
-1. **Copy** [`fair.md`](fair.md) (the template in this repo) to the root of
-   your repository or website.
+1. **Copy** [`template/fair.md`](template/fair.md) (the fill-in template) to the
+   root of your repository or website as `fair.md`.
 2. **Fill in** the YAML front matter with your project's values. Be honest in
    `fair_assessment` — `partial` and `planned` are features, not failures.
 3. **Serve** it at `https://yourdomain/fair.md`. Optionally redirect
@@ -137,7 +141,7 @@ A copy is included in this repository as
 4. **Add companions** you already have (`CITATION.cff` is the cheapest
    high-value next step; `codemeta.json` for software; RO-Crate for packaged
    objects).
-5. **Pair it with [`trust.md`](../trust-md/README.md)** if your repo publishes
+5. **Pair it with [`trust.md`](https://github.com/Neuronautix/trust.md)** if your repo publishes
    knowledge, analysis, or AI-assisted content whose *confidence* matters, not
    just its findability.
 6. **Review** the assessment periodically and update `last_reviewed`.
@@ -152,6 +156,19 @@ rules, and conformance requirements.
 
 A JSON Schema for the YAML front matter is at
 [`schema/fair.schema.json`](schema/fair.schema.json).
+
+### Validating a fair.md
+
+A small validator checks a file's front matter against the schema and the
+conformance rules in SPEC.md:
+
+```bash
+pip install pyyaml jsonschema
+python tools/validate_fair.py path/to/fair.md   # defaults to FAIR.md + examples/ if omitted
+```
+
+The same check runs in CI on every push and pull request
+([`.github/workflows/validate.yml`](.github/workflows/validate.yml)).
 
 ---
 

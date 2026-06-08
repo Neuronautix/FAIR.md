@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use the fair.md convention, please cite it as below."
+title: "fair.md — a portable, human- and machine-readable FAIR manifest"
+abstract: >-
+  fair.md is a lightweight, human- and machine-readable FAIR manifest placed
+  at the root of a repository or website. It declares what data a project holds,
+  gives a structured self-assessment of the project's FAIR posture (Findable,
+  Accessible, Interoperable, Reusable), and points to deeper machine-readable
+  affordances such as RO-Crate, codemeta.json, and CITATION.cff.
+type: software
+version: "0.1"
+date-released: "2026-06-06"
+license: Apache-2.0
+repository-code: "https://github.com/Neuronautix/FAIR.md"
+url: "https://neuronautix.com/fair.md"
+keywords:
+  - FAIR
+  - FAIR principles
+  - metadata
+  - research data management
+  - data findability
+  - machine-readable manifest
+  - open science
+authors:
+  - given-names: Damien
+    family-names: Huzard
+    orcid: "https://orcid.org/0000-0003-4820-7951"
+    affiliation: "Neuronautix"

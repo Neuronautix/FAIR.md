@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/Neuronautix/fair-md/schema/fair.schema.json",
+  "$id": "https://github.com/Neuronautix/FAIR.md/schema/fair.schema.json",
   "title": "fair.md YAML front-matter schema",
   "description": "JSON Schema (draft 2020-12) for the YAML front matter of a fair.md file conforming to the fair.md specification v0.1. Apply to the parsed YAML object (the front-matter block between the --- delimiters).",
   "type": "object",
@@ -304,6 +304,7 @@
     },
     "last_reviewed": {
       "type": "string",
+      "format": "date",
       "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
       "description": "ISO 8601 date (YYYY-MM-DD) of the last honest review."
     }
@@ -318,8 +319,8 @@
       "oneOf": [
         {
           "type": "string",
-          "pattern": "^/",
-          "description": "Root-relative path to the companion artifact."
+          "pattern": "^(/|https?://)",
+          "description": "Root-relative path (e.g. '/trust.md') or absolute http(s) URL to the companion artifact."
         },
         {
           "type": "null",
