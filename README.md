@@ -7,7 +7,7 @@ affordances live.
 
 **Status: v0.1 — proposed convention**
 
-> Companion convention: [trust.md](../trust-md/README.md) — declares the
+> Companion convention: [trust.md](https://github.com/Neuronautix/trust.md) — declares the
 > epistemic status and confidence of the knowledge a repository publishes.
 
 ---
@@ -128,7 +128,7 @@ A copy is included in this repository as
 
 ## How to adopt fair.md
 
-1. **Copy** [`fair.md`](fair.md) (the template in this repo) to the root of
+1. **Copy** [`FAIR.md`](FAIR.md) (the template in this repo) to the root of
    your repository or website.
 2. **Fill in** the YAML front matter with your project's values. Be honest in
    `fair_assessment` — `partial` and `planned` are features, not failures.
@@ -137,7 +137,7 @@ A copy is included in this repository as
 4. **Add companions** you already have (`CITATION.cff` is the cheapest
    high-value next step; `codemeta.json` for software; RO-Crate for packaged
    objects).
-5. **Pair it with [`trust.md`](../trust-md/README.md)** if your repo publishes
+5. **Pair it with [`trust.md`](https://github.com/Neuronautix/trust.md)** if your repo publishes
    knowledge, analysis, or AI-assisted content whose *confidence* matters, not
    just its findability.
 6. **Review** the assessment periodically and update `last_reviewed`.
