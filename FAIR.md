@@ -1,6 +1,6 @@
 ---
 # fair.md — a portable, human- and machine-readable FAIR manifest for a repository
-# Proposed convention (v0.1). Specification: https://github.com/Neuronautix/FAIR.md
+# Proposed convention (v0.1). Specification: https://github.com/Neuronautix/fair.md
 # Reference implementation: https://neuronautix.com/fair.md
 #
 # HOW TO USE THIS TEMPLATE
@@ -103,7 +103,7 @@ affordances live. The YAML block above is the machine-readable part; this prose
 is for people.
 
 It is a **proposed convention (v0.1)**. See the
-[fair.md specification](https://github.com/Neuronautix/FAIR.md) and the
+[fair.md specification](https://github.com/Neuronautix/fair.md) and the
 [reference implementation](https://neuronautix.com/fair.md).
 
 ## What this repository declares
