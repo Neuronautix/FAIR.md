@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/Neuronautix/fair.md/schema/fair.schema.json",
+  "$id": "https://github.com/Neuronautix/FAIR.md/schema/fair.schema.json",
   "title": "fair.md YAML front-matter schema",
   "description": "JSON Schema (draft 2020-12) for the YAML front matter of a fair.md file conforming to the fair.md specification v0.1. Apply to the parsed YAML object (the front-matter block between the --- delimiters).",
   "type": "object",
