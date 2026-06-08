@@ -6,6 +6,34 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- `CITATION.cff` for machine-readable citation of the fair.md convention.
+- `tools/validate_fair.py` — validates a fair.md file's YAML front matter against
+  the JSON Schema and reports the Section 6 conformance warnings.
+- GitHub Actions workflow (`.github/workflows/validate.yml`) running the validator
+  on every push and pull request.
+
+### Changed
+
+- `companions` values may now be absolute `http(s)` URLs (for companions hosted on
+  another domain), not only root-relative paths. Schema and SPEC.md §4.1 / §6
+  rule 9 updated accordingly.
+- JSON Schema: `last_reviewed` now also asserts `format: date` in addition to the
+  `YYYY-MM-DD` pattern.
+
+### Fixed
+
+- Repository URLs corrected from the non-existent `Neuronautix/fair-md` to
+  `Neuronautix/FAIR.md` (schema `$id`, template, CHANGELOG).
+- Broken README links: the template link (`fair.md` → `FAIR.md`) and the companion
+  `trust.md` links (previously a broken `../trust-md/` relative path).
+- Dropped `n/a` in the status enum mentioned in the example manifest's prose.
+
+---
+
 ## [0.1] — 2026-06-06
 
 ### Added

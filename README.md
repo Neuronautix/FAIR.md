@@ -153,6 +153,19 @@ rules, and conformance requirements.
 A JSON Schema for the YAML front matter is at
 [`schema/fair.schema.json`](schema/fair.schema.json).
 
+### Validating a fair.md
+
+A small validator checks a file's front matter against the schema and the
+conformance rules in SPEC.md:
+
+```bash
+pip install pyyaml jsonschema
+python tools/validate_fair.py path/to/fair.md   # defaults to examples/ if omitted
+```
+
+The same check runs in CI on every push and pull request
+([`.github/workflows/validate.yml`](.github/workflows/validate.yml)).
+
 ---
 
 ## Contributing

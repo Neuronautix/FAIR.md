@@ -328,7 +328,9 @@ fair_assessment:
 | `ro_crate` | Path to `ro-crate-metadata.json` (FAIR Digital Object packaging) |
 
 Additional companion keys are permitted. Values MUST be either a root-relative
-path string (e.g. `"/trust.md"`) or `null`.
+path string (e.g. `"/trust.md"`), an absolute `http(s)` URL (e.g.
+`"https://example.org/trust.md"`, for a companion hosted on another domain),
+or `null`.
 
 ```yaml
 companions:
@@ -414,7 +416,8 @@ A `fair.md` file is considered **conformant** if:
 6. `maturity` is one of `prototype | beta | stable`.
 7. `last_reviewed` is a valid ISO 8601 date string in `YYYY-MM-DD` format.
 8. `identifiers.canonical` is a valid URI.
-9. All `companions` values are either `null` or a string beginning with `/`.
+9. All `companions` values are either `null`, a root-relative path beginning
+   with `/`, or an absolute `http(s)` URL.
 10. The prose section is present and non-empty.
 
 A **warning** (non-blocking) SHOULD be issued if:

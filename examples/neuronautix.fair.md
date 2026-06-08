@@ -115,7 +115,7 @@ a way both a human and a crawler can read in five seconds. We already have:
 
 fair.md sits *in front of* these: a front door that (1) says plainly what data a
 repo holds, (2) gives an honest, structured **FAIR self-assessment** with a
-`yes | partial | planned | no` status per sub-principle, and (3) points to the
+`yes | partial | planned | no | n/a` status per sub-principle, and (3) points to the
 heavier machine-readable companions. It is meant to be cheap to write, honest
 about gaps, and trivially adoptable on any GitHub Pages / static site.
 

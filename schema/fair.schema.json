@@ -304,6 +304,7 @@
     },
     "last_reviewed": {
       "type": "string",
+      "format": "date",
       "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
       "description": "ISO 8601 date (YYYY-MM-DD) of the last honest review."
     }
@@ -318,8 +319,8 @@
       "oneOf": [
         {
           "type": "string",
-          "pattern": "^/",
-          "description": "Root-relative path to the companion artifact."
+          "pattern": "^(/|https?://)",
+          "description": "Root-relative path (e.g. '/trust.md') or absolute http(s) URL to the companion artifact."
         },
         {
           "type": "null",
