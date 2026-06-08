@@ -1,13 +1,13 @@
 ---
 # fair.md — a portable, human- and machine-readable FAIR manifest for a repository
-# Proposed convention (v0.1). Reference implementation: https://neuronautix.com/fair.md
+# Proposed convention (v0.2). Reference implementation: https://neuronautix.com/fair.md
 # Lineage: llms.txt (root markdown for machines) + codemeta.json / CITATION.cff
 # (machine-readable metadata) + RO-Crate / FAIR Signposting (FAIR Digital Objects).
 # fair.md does NOT replace those — it is a single human-first front door that
 # self-declares HOW FAIR a repository's data/knowledge is and WHERE the deeper
 # machine-readable affordances live.
 
-fair_md_version: "0.1"
+fair_md_version: "0.2"
 title: "Neuronautix Knowledge Base"
 description: >
   Scientific knowledge artifacts on Home-Cage Monitoring, FAIR metadata,
@@ -84,7 +84,7 @@ companions:
   ro_crate: "/ro-crate-metadata.json"      # recommended (FAIR Digital Object packaging)
 
 maturity: "prototype"
-last_reviewed: "2026-06-06"
+last_reviewed: "2026-06-08"
 ---
 
 # fair.md — Neuronautix Knowledge Base
@@ -95,7 +95,7 @@ and knowledge in this repository are, and where the deeper machine-readable
 affordances live. The YAML block above is the machine-readable part; this prose
 is for people.
 
-It is a **proposed convention (v0.1)**, not yet a standard. This repository is
+It is a **proposed convention (v0.2)**, not yet a standard. This repository is
 its reference implementation. See *How to adopt fair.md* below.
 
 ## Why fair.md?
@@ -133,7 +133,7 @@ The companion **[`/trust.md`](/trust.md)** carries the *provenance and confidenc
 half of Reusability (R1.2): who and what produced each claim, and how trustworthy
 it is.
 
-## Format specification (v0.1)
+## Format specification (v0.2)
 
 A `fair.md` file is Markdown with a YAML front-matter block. Required keys:
 

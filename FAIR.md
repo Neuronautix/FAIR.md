@@ -3,7 +3,7 @@
 # conformant manifest (not the template). The fill-in template lives at
 # template/fair.md. Specification: SPEC.md. Schema: schema/fair.schema.json.
 
-fair_md_version: "0.1"
+fair_md_version: "0.2"
 title: "fair.md — a FAIR manifest convention"
 description: >
   The fair.md convention: a lightweight, human- and machine-readable FAIR
@@ -105,7 +105,7 @@ The repository "eats its own dog food": the manifest above conforms to the very
 ## What this repository declares
 
 This repo is the home of the **fair.md convention** — a proposed convention
-(v0.1), not yet a standard. Its FAIR objects are the convention's artifacts:
+(v0.2), not yet a standard. Its FAIR objects are the convention's artifacts:
 
 - the formal [specification](SPEC.md),
 - the JSON Schema for the YAML front matter ([`schema/`](schema/)),
@@ -140,7 +140,7 @@ instructions in the [README](README.md#how-to-adopt-fairmd).
 See [`CITATION.cff`](CITATION.cff). In plain text:
 
 > Huzard, D. (2026). *fair.md — a portable, human- and machine-readable FAIR
-> manifest* (v0.1). https://github.com/Neuronautix/FAIR.md
+> manifest* (v0.2). https://github.com/Neuronautix/FAIR.md
 
 ## Changelog
 
