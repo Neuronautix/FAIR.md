@@ -1,7 +1,7 @@
-# fair.md — Formal Specification v0.1
+# fair.md — Formal Specification v0.2
 
-**Status:** Proposed convention — v0.1
-**Date:** 2026-06-06
+**Status:** Proposed convention — v0.2
+**Date:** 2026-06-08
 **Author:** Damien Huzard, PhD (ORCID [0000-0003-4820-7951](https://orcid.org/0000-0003-4820-7951)), Neuronautix
 **License:** Apache-2.0
 **Reference implementation:** <https://neuronautix.com/fair.md>
@@ -93,12 +93,13 @@ The following fields are REQUIRED in every conforming `fair.md`.
 
 - **Type:** string
 - **Required:** yes
-- **Allowed values:** `"0.1"` (for this version of the specification)
+- **Allowed values:** `"0.2"` (current) or `"0.1"` (still accepted; the changes
+  in 0.2 are backward-compatible)
 - **Description:** The version of the fair.md specification this file conforms
   to. MUST be a quoted string.
 
 ```yaml
-fair_md_version: "0.1"
+fair_md_version: "0.2"
 ```
 
 #### `title`
@@ -410,7 +411,7 @@ A `fair.md` file is considered **conformant** if:
 1. The file is valid UTF-8.
 2. The YAML front matter parses without errors.
 3. All REQUIRED fields (Section 4.1) are present.
-4. `fair_md_version` is a known version string (`"0.1"` for this specification).
+4. `fair_md_version` is a known version string (`"0.1"` or `"0.2"`).
 5. All `fair_assessment` values are members of the status enum
    (`yes | partial | planned | no | n/a`).
 6. `maturity` is one of `prototype | beta | stable`.
@@ -446,7 +447,7 @@ A repository claiming fair.md conformance SHOULD include in its README or
 documentation a statement such as:
 
 > This repository provides a `fair.md` FAIR manifest conforming to the fair.md
-> specification v0.1. See [fair.md](https://yourdomain/fair.md).
+> specification v0.2. See [fair.md](https://yourdomain/fair.md).
 
 ---
 
@@ -465,5 +466,11 @@ documentation a statement such as:
 
 ## 9. Changelog
 
+- **v0.2 (2026-06-08)** — backward-compatible additions: `companions` values may
+  now be absolute `http(s)` URLs in addition to root-relative paths (§4.1, §6
+  rule 9); `fair_md_version` accepts `"0.2"` (and still `"0.1"`). Repository
+  additions (non-normative): JSON Schema asserts `format: date` for
+  `last_reviewed`, a validator (`tools/validate_fair.py`) with CI, a
+  `CITATION.cff`, and a real root manifest for this repository.
 - **v0.1 (2026-06-06)** — initial specification, derived from the reference
   implementation at <https://neuronautix.com/fair.md>.

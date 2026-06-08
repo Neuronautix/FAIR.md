@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/Neuronautix/FAIR.md/schema/fair.schema.json",
   "title": "fair.md YAML front-matter schema",
-  "description": "JSON Schema (draft 2020-12) for the YAML front matter of a fair.md file conforming to the fair.md specification v0.1. Apply to the parsed YAML object (the front-matter block between the --- delimiters).",
+  "description": "JSON Schema (draft 2020-12) for the YAML front matter of a fair.md file conforming to the fair.md specification v0.2. Apply to the parsed YAML object (the front-matter block between the --- delimiters).",
   "type": "object",
   "required": [
     "fair_md_version",
@@ -22,8 +22,8 @@
   "properties": {
     "fair_md_version": {
       "type": "string",
-      "description": "Version of the fair.md specification this file conforms to.",
-      "enum": ["0.1"]
+      "description": "Version of the fair.md specification this file conforms to. '0.1' remains accepted for backward compatibility.",
+      "enum": ["0.1", "0.2"]
     },
     "title": {
       "type": "string",

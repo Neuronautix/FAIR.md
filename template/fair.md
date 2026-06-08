@@ -1,6 +1,6 @@
 ---
 # fair.md — a portable, human- and machine-readable FAIR manifest for a repository
-# Proposed convention (v0.1). Specification: https://github.com/Neuronautix/FAIR.md
+# Proposed convention (v0.2). Specification: https://github.com/Neuronautix/FAIR.md
 # Reference implementation: https://neuronautix.com/fair.md
 #
 # HOW TO USE THIS TEMPLATE
@@ -10,7 +10,7 @@
 # 4. Serve at https://yourdomain/fair.md.
 # 5. Review periodically; update last_reviewed each time.
 
-fair_md_version: "0.1"
+fair_md_version: "0.2"
 title: "<Repository or Dataset Title>"
 description: >
   <A paragraph-length description of what this repository contains and what
@@ -102,7 +102,7 @@ and knowledge in this repository are, and where the deeper machine-readable
 affordances live. The YAML block above is the machine-readable part; this prose
 is for people.
 
-It is a **proposed convention (v0.1)**. See the
+It is a **proposed convention (v0.2)**. See the
 [fair.md specification](https://github.com/Neuronautix/FAIR.md) and the
 [reference implementation](https://neuronautix.com/fair.md).
 

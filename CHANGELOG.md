@@ -6,7 +6,10 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
-## [Unreleased]
+## [0.2] — 2026-06-08
+
+Minor, backward-compatible release: existing v0.1 manifests remain conformant
+and `fair_md_version: "0.1"` is still accepted.
 
 ### Added
 
@@ -25,6 +28,8 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `companions` values may now be absolute `http(s)` URLs (for companions hosted on
   another domain), not only root-relative paths. Schema and SPEC.md §4.1 / §6
   rule 9 updated accordingly.
+- `fair_md_version` accepts `"0.2"` (and still `"0.1"`); spec, schema, template,
+  example, and the root manifest bumped to 0.2.
 - JSON Schema: `last_reviewed` now also asserts `format: date` in addition to the
   `YYYY-MM-DD` pattern.
 
@@ -55,4 +60,5 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - README with lineage, 30-second example, and adoption instructions
 - LICENSE (Apache-2.0)
 
+[0.2]: https://github.com/Neuronautix/FAIR.md/releases/tag/v0.2
 [0.1]: https://github.com/Neuronautix/FAIR.md/releases/tag/v0.1

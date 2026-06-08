@@ -5,7 +5,7 @@ the root of any repository or website. One file tells readers — and machines �
 what data a project holds, how FAIR it is, and where the deeper machine-readable
 affordances live.
 
-**Status: v0.1 — proposed convention**
+**Status: v0.2 — proposed convention**
 
 > Companion convention: [trust.md](https://github.com/Neuronautix/trust.md) — declares the
 > epistemic status and confidence of the knowledge a repository publishes.
@@ -16,7 +16,7 @@ affordances live.
 
 ```yaml
 ---
-fair_md_version: "0.1"
+fair_md_version: "0.2"
 title: "My Research Dataset"
 description: >
   Processed electrophysiology recordings for project X.
@@ -150,7 +150,7 @@ manifest is at [`FAIR.md`](FAIR.md), and the fill-in template lives at
 
 ## Formal specification
 
-See [`SPEC.md`](SPEC.md) for the complete v0.1 specification, including all
+See [`SPEC.md`](SPEC.md) for the complete v0.2 specification, including all
 field definitions, the status enum, FAIR sub-principle mappings, validation
 rules, and conformance requirements.
 
