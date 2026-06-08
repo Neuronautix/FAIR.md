@@ -124,12 +124,16 @@ The canonical `fair.md` for the Neuronautix knowledge base lives at:
 A copy is included in this repository as
 [`examples/neuronautix.fair.md`](examples/neuronautix.fair.md).
 
+This repository also dogfoods the convention on itself: its own conformant
+manifest is at [`FAIR.md`](FAIR.md), and the fill-in template lives at
+[`template/fair.md`](template/fair.md).
+
 ---
 
 ## How to adopt fair.md
 
-1. **Copy** [`FAIR.md`](FAIR.md) (the template in this repo) to the root of
-   your repository or website.
+1. **Copy** [`template/fair.md`](template/fair.md) (the fill-in template) to the
+   root of your repository or website as `fair.md`.
 2. **Fill in** the YAML front matter with your project's values. Be honest in
    `fair_assessment` — `partial` and `planned` are features, not failures.
 3. **Serve** it at `https://yourdomain/fair.md`. Optionally redirect
@@ -160,7 +164,7 @@ conformance rules in SPEC.md:
 
 ```bash
 pip install pyyaml jsonschema
-python tools/validate_fair.py path/to/fair.md   # defaults to examples/ if omitted
+python tools/validate_fair.py path/to/fair.md   # defaults to FAIR.md + examples/ if omitted
 ```
 
 The same check runs in CI on every push and pull request

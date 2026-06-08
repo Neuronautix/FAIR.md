@@ -1,130 +1,147 @@
 ---
-# fair.md — a portable, human- and machine-readable FAIR manifest for a repository
-# Proposed convention (v0.1). Specification: https://github.com/Neuronautix/FAIR.md
-# Reference implementation: https://neuronautix.com/fair.md
-#
-# HOW TO USE THIS TEMPLATE
-# 1. Copy this file to the root of your repository/site as `fair.md`.
-# 2. Replace every <PLACEHOLDER> with your project's values.
-# 3. Fill in fair_assessment honestly — partial/planned are features, not failures.
-# 4. Serve at https://yourdomain/fair.md.
-# 5. Review periodically; update last_reviewed each time.
+# This is the fair.md FAIR manifest for the fair.md repository itself — a real,
+# conformant manifest (not the template). The fill-in template lives at
+# template/fair.md. Specification: SPEC.md. Schema: schema/fair.schema.json.
 
 fair_md_version: "0.1"
-title: "<Repository or Dataset Title>"
+title: "fair.md — a FAIR manifest convention"
 description: >
-  <A paragraph-length description of what this repository contains and what
-  the FAIR objects are. Be specific about data types, domains, and purpose.>
-
+  The fair.md convention: a lightweight, human- and machine-readable FAIR
+  manifest placed at the root of a repository or website. This repository holds
+  the formal specification, a fill-in template, a JSON Schema for the YAML front
+  matter, a reference example, and a validator with CI.
 identifiers:
-  repository: "<https://github.com/yourorg/yourrepo>"
-  homepage: "<https://yourproject.example.org>"
-  canonical: "<https://yourproject.example.org/fair.md>"
-  doi: null   # replace with "10.xxxx/xxxxx" once minted; null is valid
-
+  repository: "https://github.com/Neuronautix/FAIR.md"
+  homepage: "https://github.com/Neuronautix/FAIR.md"
+  canonical: "https://raw.githubusercontent.com/Neuronautix/FAIR.md/main/FAIR.md"
+  doi: null            # not yet minted — recommend archiving a release to Zenodo for a DOI
 maintainers:
-  - name: "<Full Name>"
-    role: "<author | curator | maintainer — list all that apply>"
-    orcid: "<0000-0000-0000-0000>"   # strongly recommended; remove line if unknown
-    org: "<Institutional affiliation>"
-  # Add more maintainers as needed:
-  # - name: "<Full Name>"
-  #   role: "<role>"
-  #   orcid: "<0000-0000-0000-0000>"
-
+  - name: "Damien Huzard, PhD"
+    role: "author, specification editor, maintainer"
+    orcid: "0000-0003-4820-7951"
+    org: "Neuronautix — Montpellier, France"
 license:
-  # Use SPDX identifiers: https://spdx.org/licenses/
-  # Common values: CC-BY-4.0, CC0-1.0, Apache-2.0, MIT, GPL-3.0-only
-  # Use "unspecified" if not yet declared — but the field MUST be present.
-  content: "<CC-BY-4.0>"
-  code: "<Apache-2.0>"
+  content: "Apache-2.0"
+  code: "Apache-2.0"
 
 # ── What "data" this manifest covers (the FAIR objects) ──
+# This repo's "data" is the convention itself: spec, schema, template, example, tooling.
 data_resources:
-  - id: "<resource-id>"             # short identifier, no spaces (use hyphens)
-    path: "/<path/to/resource/>"
-    type: "<file format and nature, e.g. 'CSV tabular data, sample metadata'>"
-    topics: ["<topic1>", "<topic2>"]   # optional; remove if not applicable
-    count: null                        # optional; number of items/files
-  # Add more resources as needed
+  - id: "specification"
+    path: "/SPEC.md"
+    type: "formal specification of the fair.md convention (Markdown)"
+    topics: ["FAIR", "metadata", "specification"]
+  - id: "schema"
+    path: "/schema/fair.schema.json"
+    type: "JSON Schema (draft 2020-12) for the YAML front matter"
+  - id: "template"
+    path: "/template/fair.md"
+    type: "fill-in template with placeholder values and inline guidance"
+  - id: "examples"
+    path: "/examples/"
+    type: "reference fair.md manifests (worked examples)"
+    count: 1
+  - id: "validator"
+    path: "/tools/"
+    type: "Python validator for fair.md front matter (pyyaml + jsonschema)"
 
 # ── Vocabularies / standards referenced (Interoperability) ──
 vocabularies:
-  - "<Standard or ontology name, e.g. 'schema.org'>"
-  - "<e.g. 'FAIR Guiding Principles (Wilkinson et al., 2016)'>"
-  # Use [] if no vocabularies apply (unusual — but the field must be present)
+  - "FAIR Guiding Principles (Wilkinson et al., 2016)"
+  - "SPDX License List"
+  - "Citation File Format (CFF) 1.2.0"
+  - "JSON Schema (draft 2020-12)"
+  - "Keep a Changelog 1.1.0; Semantic Versioning 2.0.0"
 
 # ── FAIR self-assessment ──
 # status enum: yes | partial | planned | no | n/a
-# This is a TRANSPARENT SELF-ASSESSMENT, not a certified audit.
-# Be honest: partial and planned are informative and improvable.
-# Add a comment on each line explaining why.
+# Transparent SELF-assessment of THIS repository, not a certified audit.
 fair_assessment:
   findable:
-    F1_globally_unique_persistent_id: "<yes|partial|planned|no|n/a>"   # DOIs, persistent URLs?
-    F2_rich_metadata: "<yes|partial|planned|no|n/a>"                    # per-item metadata?
-    F3_metadata_references_data_id: "<yes|partial|planned|no|n/a>"     # metadata links back to data?
-    F4_indexed_searchable: "<yes|partial|planned|no|n/a>"              # sitemap, registry, index?
+    F1_globally_unique_persistent_id: "partial"   # canonical GitHub/raw URLs; no DOI yet
+    F2_rich_metadata: "yes"                        # this manifest + CITATION.cff + README/SPEC
+    F3_metadata_references_data_id: "yes"          # data_resources reference repo paths/ids
+    F4_indexed_searchable: "yes"                   # public on GitHub (indexed/searchable)
   accessible:
-    A1_retrievable_by_id_open_protocol: "<yes|partial|planned|no|n/a>" # HTTPS, OAI-PMH, etc.?
-    A1.1_protocol_open_free: "<yes|partial|planned|no|n/a>"            # is the protocol open?
-    A1.2_auth_where_needed: "<yes|partial|planned|no|n/a>"             # auth available if needed?
-    A2_metadata_persist_beyond_data: "<yes|partial|planned|no|n/a>"    # tombstoning / archiving?
+    A1_retrievable_by_id_open_protocol: "yes"      # HTTPS + git, no authentication
+    A1.1_protocol_open_free: "yes"
+    A1.2_auth_where_needed: "n/a"                  # all content is public
+    A2_metadata_persist_beyond_data: "partial"     # git history; no formal tombstoning
   interoperable:
-    I1_formal_accessible_knowledge_representation: "<yes|partial|planned|no|n/a>"  # JSON-LD, RDF, etc.?
-    I2_FAIR_vocabularies: "<yes|partial|planned|no|n/a>"               # ontologies embedded?
-    I3_qualified_references: "<yes|partial|planned|no|n/a>"            # citations / links to related data?
+    I1_formal_accessible_knowledge_representation: "partial"  # YAML validated by JSON Schema; no JSON-LD/RDF yet
+    I2_FAIR_vocabularies: "partial"                # standards referenced, not embedded as ontology IRIs
+    I3_qualified_references: "yes"                  # qualified links to llms.txt, RO-Crate, codemeta, CFF, Wilkinson 2016
   reusable:
-    R1_plurality_of_attributes: "<yes|partial|planned|no|n/a>"         # rich descriptive metadata?
-    R1.1_clear_data_usage_license: "<yes|partial|planned|no|n/a>"      # SPDX license declared?
-    R1.2_detailed_provenance: "<yes|partial|planned|no|n/a>"           # authorship, methods, history?
-    R1.3_domain_community_standards: "<yes|partial|planned|no|n/a>"    # community metadata standards met?
+    R1_plurality_of_attributes: "yes"
+    R1.1_clear_data_usage_license: "yes"           # Apache-2.0 (LICENSE + CITATION.cff)
+    R1.2_detailed_provenance: "partial"            # authorship + git history + CHANGELOG; no formal PROV
+    R1.3_domain_community_standards: "yes"         # SPDX, CFF, JSON Schema, Keep a Changelog, SemVer
 
 # ── Companion machine-readable artifacts (present or recommended) ──
-# Use null for items you plan to add; do not omit lines — absence is informative.
 companions:
-  trust: null            # "/trust.md" — epistemic provenance & confidence
-  sitemap: null          # "/sitemap.xml"
-  robots: null           # "/robots.txt"
-  citation_cff: null     # "/CITATION.cff" — machine-readable citation (recommended)
-  codemeta: null         # "/codemeta.json" — software metadata
-  ro_crate: null         # "/ro-crate-metadata.json" — FAIR Digital Object packaging
+  trust: null                              # no trust.md for this repo
+  sitemap: null                            # not a website
+  robots: null                             # not a website
+  citation_cff: "/CITATION.cff"            # present — machine-readable citation
+  codemeta: null                           # recommended for software metadata
+  ro_crate: null                           # recommended for FAIR Digital Object packaging
 
-maturity: "prototype"    # prototype | beta | stable
-last_reviewed: "<YYYY-MM-DD>"
+maturity: "beta"
+last_reviewed: "2026-06-08"
 ---
 
-# fair.md — <Repository or Dataset Title>
+# fair.md — FAIR manifest for this repository
 
-This file is a **FAIR manifest**: a single, human-readable and machine-parseable
-declaration of how *Findable, Accessible, Interoperable, and Reusable* the data
-and knowledge in this repository are, and where the deeper machine-readable
-affordances live. The YAML block above is the machine-readable part; this prose
-is for people.
+This file is the **fair.md FAIR manifest for the fair.md repository itself**: a
+real, conformant manifest that self-declares how *Findable, Accessible,
+Interoperable, and Reusable* this project is, and where the deeper
+machine-readable affordances live. The YAML block above is the machine-readable
+part; this prose is for people.
 
-It is a **proposed convention (v0.1)**. See the
-[fair.md specification](https://github.com/Neuronautix/FAIR.md) and the
-[reference implementation](https://neuronautix.com/fair.md).
+The repository "eats its own dog food": the manifest above conforms to the very
+[specification](SPEC.md) it defines and validates against
+[`schema/fair.schema.json`](schema/fair.schema.json) in CI.
 
 ## What this repository declares
 
-<!-- Replace this section with a short narrative of what data/knowledge is here,
-     and what the FAIR self-assessment means in practice for your project.
-     Explain any "partial" or "planned" entries. -->
+This repo is the home of the **fair.md convention** — a proposed convention
+(v0.1), not yet a standard. Its FAIR objects are the convention's artifacts:
+
+- the formal [specification](SPEC.md),
+- the JSON Schema for the YAML front matter ([`schema/`](schema/)),
+- a fill-in [template](template/fair.md),
+- a reference [example](examples/neuronautix.fair.md), and
+- a [validator](tools/validate_fair.py) wired into CI.
 
 ## FAIR posture
 
-<!-- Summarise the assessment: what is strong, what are the known gaps, and
-     what is planned to improve. Honest gaps are features. -->
+Discovery and accessibility are strong: every artifact has a canonical
+GitHub/raw URL over open HTTPS, and the project is publicly indexed and
+searchable. The honest gaps are: no minted DOI yet (F1 — archiving a release to
+Zenodo would close this), no JSON-LD/RDF representation (I1) and standards
+referenced rather than embedded as ontology IRIs (I2), and provenance carried by
+git history and the CHANGELOG rather than formal PROV (R1.2). Reusability is
+otherwise strong — Apache-2.0 is declared in both `LICENSE` and `CITATION.cff`,
+and the project follows SPDX, CFF, JSON Schema, Keep a Changelog, and SemVer.
 
 ## Companion artifacts
 
-<!-- List the companion files that exist and what they add. -->
+- **[`CITATION.cff`](CITATION.cff)** — machine-readable citation for the convention.
+- `codemeta.json` and an RO-Crate are recommended next steps (currently `null`).
+
+## How to adopt fair.md
+
+This is the manifest for the repository, not the template. To adopt fair.md in
+*your* project, copy [`template/fair.md`](template/fair.md) and follow the
+instructions in the [README](README.md#how-to-adopt-fairmd).
 
 ## How to cite
 
-<!-- If CITATION.cff is not present yet, add a plain-text citation here. -->
+See [`CITATION.cff`](CITATION.cff). In plain text:
+
+> Huzard, D. (2026). *fair.md — a portable, human- and machine-readable FAIR
+> manifest* (v0.1). https://github.com/Neuronautix/FAIR.md
 
 ## Changelog
 
-- **v0.1 (<YYYY-MM-DD>)** — initial fair.md for this repository.
+See [`CHANGELOG.md`](CHANGELOG.md) for the specification changelog.

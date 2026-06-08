@@ -7,8 +7,9 @@ the conformance rules and non-blocking warnings from SPEC.md Section 6.
 Usage:
     python tools/validate_fair.py [FILE ...]
 
-With no arguments, validates examples/*.fair.md. The root FAIR.md is the blank
-template (it intentionally contains <PLACEHOLDER> values) and is not validated.
+With no arguments, validates this repo's own manifest (FAIR.md) and
+examples/*.fair.md. The fill-in template at template/fair.md is intentionally
+non-conformant (it contains <PLACEHOLDER> values) and is not validated.
 
 Requires: pyyaml, jsonschema  (pip install pyyaml jsonschema)
 Exit status: 0 if all files are conformant, 1 otherwise.
@@ -93,7 +94,10 @@ def validate_file(path, validator):
 
 
 def main(argv):
-    paths = argv or sorted(glob.glob(str(ROOT / "examples" / "*.fair.md")))
+    default_paths = [str(ROOT / "FAIR.md")] + sorted(
+        glob.glob(str(ROOT / "examples" / "*.fair.md"))
+    )
+    paths = argv or default_paths
     if not paths:
         print("No fair.md files to validate.")
         return 0

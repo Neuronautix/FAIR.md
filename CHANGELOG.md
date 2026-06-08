@@ -10,6 +10,8 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Real, conformant `FAIR.md` manifest for this repository (the project now
+  dogfoods its own convention; validated in CI alongside the example).
 - `CITATION.cff` for machine-readable citation of the fair.md convention.
 - `tools/validate_fair.py` — validates a fair.md file's YAML front matter against
   the JSON Schema and reports the Section 6 conformance warnings.
@@ -18,6 +20,8 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- The fill-in template moved from the repository root to `template/fair.md`, so
+  the root `FAIR.md` can be the project's real manifest. README links updated.
 - `companions` values may now be absolute `http(s)` URLs (for companions hosted on
   another domain), not only root-relative paths. Schema and SPEC.md §4.1 / §6
   rule 9 updated accordingly.
