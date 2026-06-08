@@ -6,8 +6,9 @@
 fair_md_version: "0.2"
 title: "fair.md — a FAIR manifest convention"
 description: >
-  The fair.md convention: a lightweight, human- and machine-readable FAIR
-  manifest placed at the root of a repository or website. This repository holds
+  The fair.md convention (FAIR Assessment In a Repository): a lightweight, human-
+  and machine-readable FAIR manifest placed at the root of a repository or
+  website. This repository holds
   the formal specification, a fill-in template, a JSON Schema for the YAML front
   matter, a reference example, and a validator with CI.
 identifiers:
@@ -95,7 +96,8 @@ last_reviewed: "2026-06-08"
 This file is the **fair.md FAIR manifest for the fair.md repository itself**: a
 real, conformant manifest that self-declares how *Findable, Accessible,
 Interoperable, and Reusable* this project is, and where the deeper
-machine-readable affordances live. The YAML block above is the machine-readable
+machine-readable affordances live. ("fair.md" expands to **FAIR Assessment In a
+Repository**.) The YAML block above is the machine-readable
 part; this prose is for people.
 
 The repository "eats its own dog food": the manifest above conforms to the very

@@ -6,6 +6,17 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- Official expansion of the name: **fair.md — FAIR Assessment In a Repository**
+  (`.md` = Markdown). Documentation-only; surfaced in the README, SPEC.md
+  abstract, root manifest, and CITATION.cff. The file is still described as a
+  "FAIR manifest."
+
+---
+
 ## [0.2] — 2026-06-08
 
 Minor, backward-compatible release: existing v0.1 manifests remain conformant

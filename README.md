@@ -1,9 +1,9 @@
 # fair.md
 
-A lightweight, human- and machine-readable **FAIR manifest** that you drop at
-the root of any repository or website. One file tells readers — and machines —
-what data a project holds, how FAIR it is, and where the deeper machine-readable
-affordances live.
+**FAIR Assessment In a Repository** — a lightweight, human- and machine-readable
+**FAIR manifest** that you drop at the root of any repository or website. One
+file tells readers — and machines — what data a project holds, how FAIR it is,
+and where the deeper machine-readable affordances live.
 
 **Status: v0.2 — proposed convention**
 

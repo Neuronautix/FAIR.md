@@ -10,7 +10,8 @@
 
 ## 1. Abstract
 
-`fair.md` is a lightweight, human- and machine-readable FAIR manifest placed at
+`fair.md` (**FAIR Assessment In a Repository**) is a lightweight, human- and
+machine-readable FAIR manifest placed at
 the root of a repository or website. It declares what data a project holds, gives
 a structured self-assessment of the project's FAIR posture (Findable, Accessible,
 Interoperable, Reusable), and points to deeper machine-readable affordances. It

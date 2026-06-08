@@ -2,7 +2,8 @@ cff-version: 1.2.0
 message: "If you use the fair.md convention, please cite it as below."
 title: "fair.md — a portable, human- and machine-readable FAIR manifest"
 abstract: >-
-  fair.md is a lightweight, human- and machine-readable FAIR manifest placed
+  fair.md (FAIR Assessment In a Repository) is a lightweight, human- and
+  machine-readable FAIR manifest placed
   at the root of a repository or website. It declares what data a project holds,
   gives a structured self-assessment of the project's FAIR posture (Findable,
   Accessible, Interoperable, Reusable), and points to deeper machine-readable
