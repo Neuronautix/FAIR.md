@@ -200,5 +200,5 @@ F4, and A2 remain incomplete.
 
 ## Citation
 
-This example is part of fair.md v0.3.1. Cite the version-specific DOI published
-on <https://github.com/Neuronautix/FAIR.md/releases/tag/v0.3.1>.
+This example is part of fair.md v0.3.1:
+<https://doi.org/10.5281/zenodo.21622631>.

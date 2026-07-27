@@ -22,7 +22,8 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - The root manifest now records Zenodo concept DOI
   `10.5281/zenodo.20793968`; citation metadata now distinguishes the stable
-  concept identifier from version-specific release DOIs.
+  concept identifier from the v0.3.1 version DOI
+  `10.5281/zenodo.21622631`.
 - Default validation now includes complete nested v0.3 example packages and
   checks their root-relative evidence and data references.
 
