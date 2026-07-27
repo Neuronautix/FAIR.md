@@ -8,6 +8,16 @@ affordances live. It is a declaration, not certification.
 
 **Status: v0.3 — proposed convention**
 
+[![Zenodo version DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21621349.svg)](https://doi.org/10.5281/zenodo.21621349)
+[![Validate fair.md](https://github.com/Neuronautix/FAIR.md/actions/workflows/validate.yml/badge.svg)](https://github.com/Neuronautix/FAIR.md/actions/workflows/validate.yml)
+
+The current release is
+[`v0.3.0`](https://github.com/Neuronautix/FAIR.md/releases/tag/v0.3.0).
+The project is seeking independent review through
+[formal community-review issue #4](https://github.com/Neuronautix/FAIR.md/issues/4).
+Neither structural validation nor a maintainer-authored assessment is FAIR
+certification.
+
 > Companion convention: [trust.md](https://github.com/Neuronautix/trust.md) — declares the
 > epistemic status and confidence of the knowledge a repository publishes.
 
@@ -158,7 +168,33 @@ For an exact, reproducible citation of v0.3.0, use the
 [version DOI `10.5281/zenodo.21621349`](https://doi.org/10.5281/zenodo.21621349).
 For the evolving project across all releases, use the
 [concept DOI `10.5281/zenodo.20793968`](https://doi.org/10.5281/zenodo.20793968).
-Machine-readable citation metadata are provided in [`CITATION.cff`](CITATION.cff).
+Machine-readable citation metadata are provided in [`CITATION.cff`](CITATION.cff),
+and the expanded release description is tracked in
+[`docs/releases/v0.3.0.md`](docs/releases/v0.3.0.md).
+
+Use the version DOI when the cited content must be reproducible. Use the concept
+DOI when referring to fair.md generally or when following the project across
+releases. New releases should receive their own version DOI under the same
+Zenodo concept record; an existing archived release should not be overwritten.
+
+---
+
+## Formal community review
+
+The project requests critical review from GO FAIR and FAIR Implementation
+Profile practitioners, FAIRsharing curators, RDA FAIR assessment specialists,
+RO-Crate maintainers, ISA Tools experts, research data stewards, and working
+scientists.
+
+- Read the complete [`REVIEW_REQUEST.md`](REVIEW_REQUEST.md).
+- Respond on [formal community-review issue #4](https://github.com/Neuronautix/FAIR.md/issues/4).
+- Use the structured
+  [standards-review issue form](.github/ISSUE_TEMPLATE/standards-review.yml)
+  for a focused review.
+
+Please identify whether feedback is personal expertise or an official
+organizational position. Naming a community here is an invitation to review,
+not a claim of endorsement, certification, or affiliation.
 
 ---
 
@@ -199,11 +235,17 @@ A small validator checks a file's front matter against the schema and the
 conformance rules in SPEC.md:
 
 ```bash
-pip install pyyaml jsonschema
-python tools/validate_fair.py path/to/FAIR.md   # defaults to FAIR.md + examples/ if omitted
+python -m pip install -r requirements.txt
+python tools/validate_fair.py path/to/FAIR.md
+python tools/validate_fair.py  # validates FAIR.md and all maintained examples
+python -m unittest discover -s tests -v
 ```
 
-The same check runs in CI on every push and pull request
+With no path argument, the validator checks the canonical root `FAIR.md`, legacy
+`examples/*.fair.md` snapshots, and complete `examples/**/FAIR.md` packages,
+including their root-relative data, metadata, and evidence references.
+
+The same validation and behavioral test suite runs in CI on every push and pull request
 ([`.github/workflows/validate.yml`](.github/workflows/validate.yml)).
 
 ---
@@ -216,6 +258,12 @@ development workflow, [`GOVERNANCE.md`](GOVERNANCE.md) for change-approval
 rules, [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) for participation standards,
 and [`REVIEW_REQUEST.md`](REVIEW_REQUEST.md) for the formal community-review
 questions.
+
+Editorial changes require maintainer or editor approval. Backward-compatible
+normative changes require a public design issue and at least 14 days for
+comment. Breaking or governance-sensitive changes require a 30-day request for
+comments and independent community review. See
+[`GOVERNANCE.md`](GOVERNANCE.md) for the complete decision and appeal rules.
 
 Manifest values use a two-part convention version during the 0.x proposal
 period. Release tags use full [Semantic Versioning](https://semver.org/) form
