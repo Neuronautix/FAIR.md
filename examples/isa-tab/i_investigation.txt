@@ -1,8 +1,8 @@
 [ONTOLOGY SOURCE REFERENCE]
-Term Source Name	OBI	PATO
-Term Source File	http://purl.obolibrary.org/obo/obi.owl	http://purl.obolibrary.org/obo/pato.owl
-Term Source Version	example	example
-Term Source Description	Ontology for Biomedical Investigations	Phenotype and Trait Ontology
+Term Source Name	OBI	PATO	ENVO	UO
+Term Source File	http://purl.obolibrary.org/obo/obi.owl	http://purl.obolibrary.org/obo/pato.owl	http://purl.obolibrary.org/obo/envo.owl	http://purl.obolibrary.org/obo/uo.owl
+Term Source Version	example	example	example	example
+Term Source Description	Ontology for Biomedical Investigations	Phenotype and Trait Ontology	Environment Ontology	Units of measurement ontology
 [INVESTIGATION]
 Investigation Identifier	FAIRMD-ISA-EXAMPLE
 Investigation Title	Synthetic temperature assay

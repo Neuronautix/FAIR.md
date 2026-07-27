@@ -64,6 +64,10 @@ vocabularies:
     identifier: "http://purl.obolibrary.org/obo/obi.owl"
   - name: "Phenotype and Trait Ontology"
     identifier: "http://purl.obolibrary.org/obo/pato.owl"
+  - name: "Environment Ontology"
+    identifier: "http://purl.obolibrary.org/obo/envo.owl"
+  - name: "Units of measurement ontology"
+    identifier: "http://purl.obolibrary.org/obo/uo.owl"
   - name: "FAIR Guiding Principles"
     identifier: "https://doi.org/10.1038/sdata.2016.18"
     version: "2016"
@@ -138,7 +142,7 @@ fair_assessment:
       evidence:
         - id: "/examples/isa-tab/i_investigation.txt"
           type: "metadata-record"
-          note: "OBI and PATO sources are declared; term coverage is intentionally minimal."
+          note: "OBI, PATO, ENVO, and UO sources are declared; term coverage is intentionally minimal."
     I3_qualified_references:
       status: "yes"
       metric_ids: ["RDA-I3-01M"]

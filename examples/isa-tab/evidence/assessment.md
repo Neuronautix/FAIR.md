@@ -6,7 +6,7 @@ profiling.
 
 - The ISA files follow the Investigation–Study–Assay file pattern and link the
   study, assay, samples, protocols, and data file.
-- OBI and PATO ontology sources and accessions are demonstrated.
+- OBI, PATO, ENVO, and UO ontology sources and accessions are demonstrated.
 - Files are public, machine-readable, and available in open tabular formats.
 - CC-BY-4.0 is declared for the synthetic content.
 - No DOI, repository deposit, preservation policy, external ISA API validation,

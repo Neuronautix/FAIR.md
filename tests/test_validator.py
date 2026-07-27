@@ -42,7 +42,7 @@ class ValidatorTests(unittest.TestCase):
         self.assertEqual([], errors)
 
     def test_complete_v03_examples_are_valid(self):
-        examples = sorted((ROOT / "examples").glob("*/FAIR.md"))
+        examples = sorted((ROOT / "examples").rglob("FAIR.md"))
         self.assertGreaterEqual(len(examples), 2)
         for example in examples:
             with self.subTest(example=example):
