@@ -8,12 +8,11 @@ abstract: >-
   (Findable, Accessible, Interoperable, Reusable), separates openness from FAIR,
   and points to deeper machine-readable affordances such as RO-Crate.
 type: software
-version: "0.3.0"
+version: "0.3.1"
 date-released: "2026-07-27"
-doi: "10.5281/zenodo.21621349"
 license: Apache-2.0
 repository-code: "https://github.com/Neuronautix/FAIR.md"
-url: "https://doi.org/10.5281/zenodo.21621349"
+url: "https://github.com/Neuronautix/FAIR.md/releases/tag/v0.3.1"
 keywords:
   - FAIR
   - FAIR principles

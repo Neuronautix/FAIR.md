@@ -235,5 +235,5 @@ life-science repository, and replace all example identifiers and evidence.
 
 ## Citation
 
-This example is part of fair.md v0.3.0:
-<https://doi.org/10.5281/zenodo.21621349>.
+This example is part of fair.md v0.3.1. Cite the version-specific DOI published
+on <https://github.com/Neuronautix/FAIR.md/releases/tag/v0.3.1>.
