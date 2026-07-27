@@ -1,0 +1,3 @@
+Source Name	Characteristics[Environmental material]	Term Source REF	Term Accession Number	Protocol REF	Sample Name	Factor Value[ambient temperature]	Unit	Term Source REF	Term Accession Number
+site-A	environmental material	ENVO	http://purl.obolibrary.org/obo/ENVO_00010483	sample collection	sample-A	18.4	degree Celsius	UO	http://purl.obolibrary.org/obo/UO_0000027
+site-B	environmental material	ENVO	http://purl.obolibrary.org/obo/ENVO_00010483	sample collection	sample-B	17.8	degree Celsius	UO	http://purl.obolibrary.org/obo/UO_0000027

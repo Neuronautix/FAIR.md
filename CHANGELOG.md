@@ -6,6 +6,24 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- Complete v0.3 worked packages for a generic dataset and an illustrative
+  ISA-Tab Investigation–Study–Assay project.
+- Contribution guidance, governance and change-approval rules, a Code of
+  Conduct, a formal-review brief, and a structured standards-review issue
+  template.
+
+### Changed
+
+- The root manifest now records Zenodo concept DOI
+  `10.5281/zenodo.20793968`; citation documentation and `CITATION.cff` identify
+  the exact v0.3.0 DOI `10.5281/zenodo.21621349`.
+- Default validation now includes complete nested v0.3 example packages and
+  checks their root-relative evidence and data references.
+
 ## [0.3] — 2026-07-27
 
 Major integrity and FAIR-logic revision. Legacy v0.1/v0.2 manifests remain

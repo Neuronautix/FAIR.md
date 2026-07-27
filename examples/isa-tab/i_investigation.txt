@@ -1,0 +1,59 @@
+[ONTOLOGY SOURCE REFERENCE]
+Term Source Name	OBI	PATO	ENVO	UO
+Term Source File	http://purl.obolibrary.org/obo/obi.owl	http://purl.obolibrary.org/obo/pato.owl	http://purl.obolibrary.org/obo/envo.owl	http://purl.obolibrary.org/obo/uo.owl
+Term Source Version	example	example	example	example
+Term Source Description	Ontology for Biomedical Investigations	Phenotype and Trait Ontology	Environment Ontology	Units of measurement ontology
+[INVESTIGATION]
+Investigation Identifier	FAIRMD-ISA-EXAMPLE
+Investigation Title	Synthetic temperature assay
+Investigation Description	Illustrative ISA-Tab package for the fair.md v0.3 example.
+Investigation Submission Date	2026-07-27
+Investigation Public Release Date	2026-07-27
+[INVESTIGATION CONTACTS]
+Investigation Person Last Name	Steward
+Investigation Person First Name	Example
+Investigation Person Email	data.steward@example.org
+Investigation Person Address	Example Research Institute
+Investigation Person Affiliation	Example Life Science Institute
+Investigation Person Roles	data steward
+[STUDY]
+Study Identifier	FAIRMD-STUDY-1
+Study Title	Synthetic environmental temperature study
+Study Description	Two synthetic samples measured with a digital temperature sensor.
+Study Submission Date	2026-07-27
+Study Public Release Date	2026-07-27
+Study File Name	s_study.txt
+[STUDY DESIGN DESCRIPTORS]
+Study Design Type	observational design
+Study Design Type Term Accession Number	http://purl.obolibrary.org/obo/OBI_0000626
+Study Design Type Term Source REF	OBI
+[STUDY FACTORS]
+Study Factor Name	ambient temperature
+Study Factor Type	temperature
+Study Factor Type Term Accession Number	http://purl.obolibrary.org/obo/PATO_0000146
+Study Factor Type Term Source REF	PATO
+[STUDY ASSAYS]
+Study Assay Measurement Type	temperature measurement
+Study Assay Measurement Type Term Accession Number	http://purl.obolibrary.org/obo/OBI_0001985
+Study Assay Measurement Type Term Source REF	OBI
+Study Assay Technology Type	digital sensor
+Study Assay Technology Platform	Example Sensor
+Study Assay File Name	a_assay.txt
+[STUDY PROTOCOLS]
+Study Protocol Name	sample collection	temperature measurement
+Study Protocol Type	sample collection	data acquisition
+Study Protocol Type Term Accession Number	http://purl.obolibrary.org/obo/OBI_0000659	http://purl.obolibrary.org/obo/OBI_0000011
+Study Protocol Type Term Source REF	OBI	OBI
+Study Protocol Description	Assigns synthetic site sources to samples.	Records temperature with a digital sensor.
+Study Protocol URI	https://example.org/protocols/sample-collection	https://example.org/protocols/temperature-measurement
+Study Protocol Version	example	example
+Study Protocol Parameters Name	not applicable	instrument model
+Study Protocol Components Name	collection container	Example Sensor
+Study Protocol Components Type	container	measurement device
+[STUDY CONTACTS]
+Study Person Last Name	Steward
+Study Person First Name	Example
+Study Person Email	data.steward@example.org
+Study Person Address	Example Research Institute
+Study Person Affiliation	Example Life Science Institute
+Study Person Roles	data steward

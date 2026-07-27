@@ -1,0 +1,4 @@
+observation_id,date,site_code,value_celsius
+obs-001,2026-07-01,SITE-A,18.4
+obs-002,2026-07-02,SITE-A,19.1
+obs-003,2026-07-03,SITE-B,17.8

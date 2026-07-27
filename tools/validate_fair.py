@@ -7,9 +7,10 @@ the conformance rules and non-blocking warnings from SPEC.md Section 6.
 Usage:
     python tools/validate_fair.py [FILE ...]
 
-With no arguments, validates this repo's own manifest (FAIR.md) and
-examples/*.fair.md. The fill-in template at template/fair.md is intentionally
-non-conformant (it contains <PLACEHOLDER> values) and is not validated.
+With no arguments, validates this repo's own manifest (FAIR.md), legacy
+examples/*.fair.md files, and complete examples/**/FAIR.md packages. The
+fill-in template at template/fair.md is intentionally non-conformant (it
+contains <PLACEHOLDER> values) and is not validated.
 
 Requires: pyyaml, jsonschema  (pip install pyyaml jsonschema)
 Exit status: 0 if all files are conformant, 1 otherwise.
@@ -199,9 +200,17 @@ def exact_local_path_exists(root, reference):
 
 
 def local_reference_errors(data, manifest_path):
-    """Validate this repository's own root-relative declarations."""
+    """Validate root-relative declarations in maintained repository manifests."""
     path = Path(manifest_path).resolve()
-    if path.parent != ROOT or path.name != "FAIR.md":
+    maintained_manifest = path == ROOT / "FAIR.md"
+    try:
+        relative_path = path.relative_to(ROOT / "examples")
+        maintained_manifest = maintained_manifest or (
+            path.name == "FAIR.md" and len(relative_path.parts) >= 2
+        )
+    except ValueError:
+        pass
+    if not maintained_manifest:
         return []
 
     references = []
@@ -268,8 +277,10 @@ def validate_file(path, validator):
 
 
 def main(argv):
-    default_paths = [str(ROOT / "FAIR.md")] + sorted(
-        glob.glob(str(ROOT / "examples" / "*.fair.md"))
+    default_paths = [str(ROOT / "FAIR.md")]
+    default_paths.extend(sorted(glob.glob(str(ROOT / "examples" / "*.fair.md"))))
+    default_paths.extend(
+        sorted(glob.glob(str(ROOT / "examples" / "**" / "FAIR.md"), recursive=True))
     )
     paths = argv or default_paths
     if not paths:

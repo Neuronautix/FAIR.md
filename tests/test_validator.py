@@ -41,6 +41,14 @@ class ValidatorTests(unittest.TestCase):
         errors, _ = validate_fair.validate_file(ROOT / "FAIR.md", self.validator)
         self.assertEqual([], errors)
 
+    def test_complete_v03_examples_are_valid(self):
+        examples = sorted((ROOT / "examples").rglob("FAIR.md"))
+        self.assertGreaterEqual(len(examples), 2)
+        for example in examples:
+            with self.subTest(example=example):
+                errors, _ = validate_fair.validate_file(example, self.validator)
+                self.assertEqual([], errors)
+
     def test_real_calendar_date_is_enforced(self):
         data = copy.deepcopy(self.valid_v03)
         data["last_reviewed"] = "2026-99-99"
@@ -122,6 +130,17 @@ prose
         data = copy.deepcopy(self.valid_v03)
         data["companions"]["x_missing"] = "/DOES-NOT-EXIST"
         errors = validate_fair.local_reference_errors(data, ROOT / "FAIR.md")
+        self.assertTrue(any("does not exist with exact case" in error for error in errors))
+
+    def test_missing_local_reference_fails_for_complete_example(self):
+        example = ROOT / "examples" / "generic-dataset" / "FAIR.md"
+        text = example.read_text(encoding="utf-8")
+        yaml_text, _ = validate_fair.split_front_matter(text)
+        data = validate_fair.yaml.load(
+            yaml_text, Loader=validate_fair.UniqueKeyLoader
+        )
+        data["companions"]["x_missing"] = "/examples/DOES-NOT-EXIST"
+        errors = validate_fair.local_reference_errors(data, example)
         self.assertTrue(any("does not exist with exact case" in error for error in errors))
 
 
