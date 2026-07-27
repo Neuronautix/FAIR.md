@@ -1,0 +1,169 @@
+registry_version: "1.0"
+retrieved_at: "2026-07-27"
+copy_policy_default: "reference-only"
+
+sources:
+  - source_id: "fair-principles-2016"
+    title: "The FAIR Guiding Principles for scientific data management and stewardship"
+    publisher: "Scientific Data"
+    canonical_uri: "https://www.nature.com/articles/sdata201618"
+    persistent_id: "https://doi.org/10.1038/sdata.2016.18"
+    version: "2016"
+    media_type: "text/html"
+    license:
+      id: "CC-BY-4.0"
+      uri: "https://creativecommons.org/licenses/by/4.0/"
+    copy_policy: "reference-only"
+    local_path: null
+    sha256: null
+    scope: "Normative FAIR principles F1–F4, A1–A2, I1–I3, and R1–R1.3."
+
+  - source_id: "go-fair-principles"
+    title: "FAIR Principles"
+    publisher: "GO FAIR"
+    canonical_uri: "https://www.go-fair.org/fair-principles/"
+    persistent_id: null
+    version: "retrieved 2026-07-27"
+    media_type: "text/html"
+    license:
+      id: "not-verified"
+      uri: null
+    copy_policy: "reference-only"
+    local_path: null
+    sha256: null
+    scope: "Machine-actionability and implementation guidance for the FAIR principles."
+
+  - source_id: "rda-fdmm-1.0"
+    title: "FAIR Data Maturity Model: specification and guidelines"
+    publisher: "Research Data Alliance"
+    canonical_uri: "https://www.rd-alliance.org/system/files/FAIR%20Data%20Maturity%20Model_%20specification%20and%20guidelines_v1.00.pdf"
+    persistent_id: "https://doi.org/10.15497/rda00050"
+    version: "1.0"
+    media_type: "application/pdf"
+    license:
+      id: "CC-BY-4.0"
+      uri: "https://creativecommons.org/licenses/by/4.0/"
+    copy_policy: "reference-only"
+    local_path: null
+    sha256: null
+    scope: "Evidence-oriented FAIR assessment indicators and priorities."
+
+  - source_id: "fair-cookbook"
+    title: "FAIR Cookbook"
+    publisher: "ELIXIR"
+    canonical_uri: "https://faircookbook.elixir-europe.org/"
+    persistent_id: null
+    version: "living resource; retrieved 2026-07-27"
+    media_type: "text/html"
+    license:
+      id: "CC-BY-4.0"
+      uri: "https://creativecommons.org/licenses/by/4.0/"
+    copy_policy: "reference-only"
+    local_path: null
+    sha256: null
+    scope: "Practical FAIRification recipes, maturity guidance, and applied examples."
+
+  - source_id: "open-definition-2.1"
+    title: "Open Definition"
+    publisher: "Open Knowledge Foundation"
+    canonical_uri: "https://opendefinition.org/od/2.1/en/"
+    persistent_id: null
+    version: "2.1"
+    media_type: "text/html"
+    license:
+      id: "CC-BY-4.0"
+      uri: "https://creativecommons.org/licenses/by/4.0/"
+    copy_policy: "reference-only"
+    local_path: null
+    sha256: null
+    scope: "Open license/status, access, machine readability, and open format."
+
+  - source_id: "fairsharing"
+    title: "FAIRsharing"
+    publisher: "University of Oxford"
+    canonical_uri: "https://fairsharing.org/"
+    persistent_id: "https://doi.org/10.25504/FAIRsharing"
+    version: "living registry; retrieved 2026-07-27"
+    media_type: "text/html"
+    license:
+      id: "CC-BY-SA-4.0"
+      uri: "https://creativecommons.org/licenses/by-sa/4.0/"
+    copy_policy: "reference-only"
+    local_path: null
+    sha256: null
+    scope: "Registry identifiers for standards, databases, repositories, and policies."
+
+  - source_id: "isa-model-1.0"
+    title: "ISA Model and Serialization Specifications"
+    publisher: "ISA tools"
+    canonical_uri: "https://isa-specs.readthedocs.io/en/latest/"
+    persistent_id: null
+    version: "1.0"
+    media_type: "text/html"
+    license:
+      id: "not-verified"
+      uri: null
+    copy_policy: "reference-only"
+    local_path: null
+    sha256: null
+    scope: "Investigation–Study–Assay model, ISA-Tab, and ISA-JSON."
+
+  - source_id: "ro-crate-1.3"
+    title: "RO-Crate Metadata Specification"
+    publisher: "Research Object Crate community"
+    canonical_uri: "https://www.researchobject.org/ro-crate/specification/1.3/"
+    persistent_id: "https://w3id.org/ro/crate/1.3"
+    version: "1.3"
+    media_type: "text/html"
+    license:
+      id: "Apache-2.0"
+      uri: "https://www.apache.org/licenses/LICENSE-2.0"
+    copy_policy: "reference-only"
+    local_path: null
+    sha256: null
+    scope: "JSON-LD packaging for data entities, contextual entities, and provenance."
+
+  - source_id: "fair-signposting"
+    title: "FAIR Signposting Profile"
+    publisher: "Signposting the Scholarly Web"
+    canonical_uri: "https://signposting.org/FAIR/"
+    persistent_id: null
+    version: "2023-10-02"
+    media_type: "text/html"
+    license:
+      id: "not-verified"
+      uri: null
+    copy_policy: "reference-only"
+    local_path: null
+    sha256: null
+    scope: "Typed links for persistent IDs, metadata, content, licenses, and authors."
+
+  - source_id: "dcat-3"
+    title: "Data Catalog Vocabulary (DCAT) — Version 3"
+    publisher: "W3C"
+    canonical_uri: "https://www.w3.org/TR/vocab-dcat-3/"
+    persistent_id: "https://www.w3.org/TR/vocab-dcat-3/"
+    version: "W3C Recommendation 2024-08-22"
+    media_type: "text/html"
+    license:
+      id: "W3C-Document-License-2023"
+      uri: "https://www.w3.org/copyright/document-license-2023/"
+    copy_policy: "reference-only"
+    local_path: null
+    sha256: null
+    scope: "Dataset, distribution, catalog, service, rights, and qualified relations."
+
+  - source_id: "rfc8615"
+    title: "Well-Known Uniform Resource Identifiers (URIs)"
+    publisher: "IETF"
+    canonical_uri: "https://www.rfc-editor.org/rfc/rfc8615"
+    persistent_id: "https://doi.org/10.17487/RFC8615"
+    version: "RFC 8615"
+    media_type: "text/html"
+    license:
+      id: "IETF-Trust"
+      uri: "https://trustee.ietf.org/documents/trust-legal-provisions/"
+    copy_policy: "reference-only"
+    local_path: null
+    sha256: null
+    scope: "Registration requirements for names under /.well-known/."

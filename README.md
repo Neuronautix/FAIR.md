@@ -2,28 +2,33 @@
 
 A lightweight, human- and machine-readable **FAIR manifest** that you drop at
 the root of any repository or website. One file tells readers — and machines —
-what data a project holds, how FAIR it is, and where the deeper machine-readable
-affordances live.
+what data a project holds, which FAIR implementation choices it makes, what
+evidence supports its current posture, and where deeper machine-readable
+affordances live. It is a declaration, not certification.
 
-**Status: v0.2 — proposed convention**
+**Status: v0.3 — proposed convention**
 
 > Companion convention: [trust.md](https://github.com/Neuronautix/trust.md) — declares the
 > epistemic status and confidence of the knowledge a repository publishes.
 
 ---
 
-## 30-second example
+## 30-second v0.3 excerpt
+
+Version 0.3 separates resources, implementation profiles, evidence-backed
+assessment results, and Open Definition status. The complete
+[template](template/fair.md) contains every required FAIR sub-principle.
 
 ```yaml
 ---
-fair_md_version: "0.2"
+fair_md_version: "0.3"
 title: "My Research Dataset"
 description: >
   Processed electrophysiology recordings for project X.
 identifiers:
   repository: "https://github.com/myorg/myproject"
   homepage: "https://myproject.example.org"
-  canonical: "https://myproject.example.org/fair.md"
+  canonical: "https://myproject.example.org/FAIR.md"
   doi: "10.5281/zenodo.1234567"
 maintainers:
   - name: "Jane Smith"
@@ -37,35 +42,44 @@ data_resources:
   - id: "recordings"
     path: "/data/recordings/"
     type: "HDF5 electrophysiology files, NWB format"
+    identifier: "https://doi.org/10.5281/zenodo.1234567"
+    media_type: "application/x-hdf5"
+    metadata: ["/ro-crate-metadata.json"]
+    license: "CC-BY-4.0"
 vocabularies:
-  - "Neurodata Without Borders (NWB)"
-  - "schema.org"
+  - name: "RO-Crate"
+    identifier: "https://w3id.org/ro/crate/1.3"
+    version: "1.3"
 fair_assessment:
   findable:
-    F1_globally_unique_persistent_id: "yes"
-    F2_rich_metadata: "yes"
-    F3_metadata_references_data_id: "yes"
-    F4_indexed_searchable: "yes"
-  accessible:
-    A1_retrievable_by_id_open_protocol: "yes"
-    A1.1_protocol_open_free: "yes"
-    A1.2_auth_where_needed: "n/a"
-    A2_metadata_persist_beyond_data: "partial"
-  interoperable:
-    I1_formal_accessible_knowledge_representation: "yes"
-    I2_FAIR_vocabularies: "yes"
-    I3_qualified_references: "partial"
-  reusable:
-    R1_plurality_of_attributes: "yes"
-    R1.1_clear_data_usage_license: "yes"
-    R1.2_detailed_provenance: "partial"
-    R1.3_domain_community_standards: "yes"
+    F1_globally_unique_persistent_id:
+      status: "yes"
+      metric_ids: ["RDA-F1-01M", "RDA-F1-01D"]
+      evidence:
+        - id: "https://doi.org/10.5281/zenodo.1234567"
+          type: "persistent-identifier"
+  # All remaining F/A/I/R entries are required in a complete manifest.
 companions:
   trust: "/trust.md"
   sitemap: "/sitemap.xml"
   citation_cff: "/CITATION.cff"
+  ro_crate: "/ro-crate-metadata.json"
+profiles:
+  - name: "RO-Crate 1.3"
+    identifier: "https://w3id.org/ro/crate/1.3"
+    status: "adopted"
+    applies_to: ["recordings"]
+openness:
+  open_definition_version: "2.1"
+  status: "conformant"
+  license_status: "open"
+  access: "open"
+  machine_readable: true
+  open_format: true
+  source_available: true
+  evidence: ["/LICENSE", "/data/recordings/"]
 maturity: "beta"
-last_reviewed: "2026-06-06"
+last_reviewed: "2026-07-27"
 ---
 
 # My Research Dataset — FAIR Manifest
@@ -92,10 +106,9 @@ We already have excellent tools, each with a different ergonomic niche:
 | **`robots.txt` / `sitemap.xml`** | Discovery signals for crawlers |
 
 `fair.md` sits *in front of* these: a front door that (a) says plainly what data
-a repo holds, (b) gives an honest, structured **FAIR self-assessment** with a
-`yes | partial | planned | no | n/a` status per sub-principle, and (c) points to
-the heavier machine-readable companions. It is cheap to write, honest about gaps,
-and trivially adoptable on any GitHub Pages or static site.
+a repo holds, (b) records an honest, **evidence-backed FAIR self-assessment**,
+(c) names concrete implementation profiles, (d) reports openness separately,
+and (e) points to heavier machine-readable companions.
 
 ### Lineage
 
@@ -115,14 +128,15 @@ and trivially adoptable on any GitHub Pages or static site.
 
 ---
 
-## Reference implementation
+## Worked example and self-manifest
 
-The canonical `fair.md` for the Neuronautix knowledge base lives at:
+The Neuronautix knowledge base originally inspired the convention:
 
 **<https://neuronautix.com/fair.md>**
 
-A copy is included in this repository as
-[`examples/neuronautix.fair.md`](examples/neuronautix.fair.md).
+A legacy v0.2 worked snapshot is included at
+[`examples/neuronautix.fair.md`](examples/neuronautix.fair.md). It is not
+asserted to mirror the current live site.
 
 This repository also dogfoods the convention on itself: its own conformant
 manifest is at [`FAIR.md`](FAIR.md), and the fill-in template lives at
@@ -133,11 +147,11 @@ manifest is at [`FAIR.md`](FAIR.md), and the fill-in template lives at
 ## How to adopt fair.md
 
 1. **Copy** [`template/fair.md`](template/fair.md) (the fill-in template) to the
-   root of your repository or website as `fair.md`.
+   root of your repository or website as `FAIR.md`.
 2. **Fill in** the YAML front matter with your project's values. Be honest in
    `fair_assessment` — `partial` and `planned` are features, not failures.
-3. **Serve** it at `https://yourdomain/fair.md`. Optionally redirect
-   `/.well-known/fair.md` → `/fair.md` for programmatic discovery.
+3. **Serve** it at `https://yourdomain/FAIR.md`. Do not present
+   `/.well-known/fair.md` as standardized unless it is registered under RFC 8615.
 4. **Add companions** you already have (`CITATION.cff` is the cheapest
    high-value next step; `codemeta.json` for software; RO-Crate for packaged
    objects).
@@ -150,12 +164,16 @@ manifest is at [`FAIR.md`](FAIR.md), and the fill-in template lives at
 
 ## Formal specification
 
-See [`SPEC.md`](SPEC.md) for the complete v0.2 specification, including all
+See [`SPEC.md`](SPEC.md) for the complete v0.3 specification, including all
 field definitions, the status enum, FAIR sub-principle mappings, validation
 rules, and conformance requirements.
 
 A JSON Schema for the YAML front matter is at
 [`schema/fair.schema.json`](schema/fair.schema.json).
+
+The [`fair-documented/`](fair-documented/README.md) source pack records the
+authoritative standards, crosswalk, evidence model, optional ISA profile, and
+implementation roadmap used for v0.3.
 
 ### Validating a fair.md
 
@@ -164,7 +182,7 @@ conformance rules in SPEC.md:
 
 ```bash
 pip install pyyaml jsonschema
-python tools/validate_fair.py path/to/fair.md   # defaults to FAIR.md + examples/ if omitted
+python tools/validate_fair.py path/to/FAIR.md   # defaults to FAIR.md + examples/ if omitted
 ```
 
 The same check runs in CI on every push and pull request
@@ -183,9 +201,9 @@ requests are welcome:
 - Reference the formal spec in SPEC.md when proposing changes — keep changes
   backward-compatible within the 0.x series.
 
-The convention follows [Semantic Versioning](https://semver.org/): patch releases
-for clarifications, minor releases for additive changes, major releases for
-breaking changes.
+Manifest values use a two-part convention version during the 0.x proposal
+period. Release tags use full [Semantic Versioning](https://semver.org/) form
+(for example `v0.3.0`); migration rules are documented in the changelog.
 
 ---
 

@@ -4,12 +4,12 @@ title: "fair.md — a portable, human- and machine-readable FAIR manifest"
 abstract: >-
   fair.md is a lightweight, human- and machine-readable FAIR manifest placed
   at the root of a repository or website. It declares what data a project holds,
-  gives a structured self-assessment of the project's FAIR posture (Findable,
-  Accessible, Interoperable, Reusable), and points to deeper machine-readable
-  affordances such as RO-Crate, codemeta.json, and CITATION.cff.
+  gives an evidence-backed self-assessment of the project's FAIR posture
+  (Findable, Accessible, Interoperable, Reusable), separates openness from FAIR,
+  and points to deeper machine-readable affordances such as RO-Crate.
 type: software
-version: "0.2"
-date-released: "2026-06-08"
+version: "0.3"
+date-released: "2026-07-27"
 license: Apache-2.0
 repository-code: "https://github.com/Neuronautix/FAIR.md"
 url: "https://neuronautix.com/fair.md"
@@ -20,6 +20,8 @@ keywords:
   - research data management
   - data findability
   - machine-readable manifest
+  - FAIR assessment evidence
+  - Open Definition
   - open science
 authors:
   - given-names: Damien

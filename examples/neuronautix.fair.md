@@ -1,6 +1,6 @@
 ---
 # fair.md — a portable, human- and machine-readable FAIR manifest for a repository
-# Proposed convention (v0.2). Reference implementation: https://neuronautix.com/fair.md
+# Legacy v0.2 worked example. It is not a live-site mirror or certification.
 # Lineage: llms.txt (root markdown for machines) + codemeta.json / CITATION.cff
 # (machine-readable metadata) + RO-Crate / FAIR Signposting (FAIR Digital Objects).
 # fair.md does NOT replace those — it is a single human-first front door that
@@ -8,7 +8,7 @@
 # machine-readable affordances live.
 
 fair_md_version: "0.2"
-title: "Neuronautix Knowledge Base"
+title: "Neuronautix Knowledge Base (worked example snapshot)"
 description: >
   Scientific knowledge artifacts on Home-Cage Monitoring, FAIR metadata,
   behavioral neuroscience, AI agents in research, and New Approach
@@ -16,7 +16,7 @@ description: >
 identifiers:
   repository: "https://github.com/Neuronautix/neuronautix.com"
   homepage: "https://neuronautix.com"
-  canonical: "https://neuronautix.com/fair.md"
+  canonical: "https://raw.githubusercontent.com/Neuronautix/FAIR.md/main/examples/neuronautix.fair.md"
   doi: null            # not yet minted — recommend archiving releases to Zenodo for a DOI
 maintainers:
   - name: "Damien Huzard, PhD"
@@ -24,9 +24,9 @@ maintainers:
     orcid: "0000-0003-4820-7951"
     org: "Neuronautix — Montpellier, France"
 license:
-  # Licensed Apache-2.0 (matching the DESIGN.md format this repo follows).
-  content: "Apache-2.0"
-  code: "Apache-2.0"
+  # No repository-wide license text was verified when this example was reviewed.
+  content: "unspecified"
+  code: "unspecified"
 
 # ── What "data" this manifest covers (the FAIR objects) ──
 data_resources:
@@ -79,9 +79,9 @@ companions:
   trust: "/trust.md"                       # epistemic provenance & confidence (present)
   sitemap: "/sitemap.xml"                  # present
   robots: "/robots.txt"                    # present
-  citation_cff: "/CITATION.cff"            # recommended (machine-readable citation)
-  codemeta: "/codemeta.json"               # recommended (software metadata)
-  ro_crate: "/ro-crate-metadata.json"      # recommended (FAIR Digital Object packaging)
+  citation_cff: null                       # recommended (machine-readable citation)
+  codemeta: null                           # recommended (software metadata)
+  ro_crate: null                           # recommended (FAIR Digital Object packaging)
 
 maturity: "prototype"
 last_reviewed: "2026-06-08"
@@ -95,8 +95,8 @@ and knowledge in this repository are, and where the deeper machine-readable
 affordances live. The YAML block above is the machine-readable part; this prose
 is for people.
 
-It is a **proposed convention (v0.2)**, not yet a standard. This repository is
-its reference implementation. See *How to adopt fair.md* below.
+It is a legacy **v0.2 worked example**, not a live-site mirror, certification,
+or current reference deployment. See *How to adopt fair.md* below.
 
 ## Why fair.md?
 
@@ -126,7 +126,7 @@ objects are *knowledge artifacts* — a source-backed Markdown wiki (`/knowledge
 19 cited analytical notes (`/notes/`), and HTML presentations with source maps
 (`/presentations/`). The self-assessment above reflects that honestly: discovery
 and accessibility are strong (canonical URLs, sitemap, rich meta tags, open
-HTTPS); the current gaps are an undeclared license (Reusability) and
+HTTPS); the current gaps are an undeclared repository-wide license (Reusability) and
 not-yet-embedded machine-readable vocabularies / JSON-LD (Interoperability).
 
 The companion **[`/trust.md`](/trust.md)** carries the *provenance and confidence*
@@ -160,8 +160,8 @@ principles so that automated FAIR assessment tools can map them directly.
 2. Replace the YAML with your project's values. **Be honest in
    `fair_assessment`** — `partial` and `planned` are features, not failures;
    the point is a truthful, improvable baseline.
-3. Serve it at `https://yourdomain/fair.md` (and optionally redirect
-   `/.well-known/fair.md` → `/fair.md`).
+3. Serve it at `https://yourdomain/fair.md`. Treat `/.well-known/fair.md` as
+   experimental unless it is registered under RFC 8615.
 4. Add the companions you can (`CITATION.cff` is the cheapest high-value next
    step; `codemeta.json` for software; RO-Crate for packaged objects).
 5. Pair it with a **[`trust.md`](/trust.md)** if your repo publishes knowledge,

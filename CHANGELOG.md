@@ -6,6 +6,43 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [0.3] — 2026-07-27
+
+Major integrity and FAIR-logic revision. Legacy v0.1/v0.2 manifests remain
+supported.
+
+### Added
+
+- Evidence-backed v0.3 assessment objects with optional RDA FAIR Data Maturity
+  Model metric identifiers.
+- Structured, resolvable vocabulary declarations and implementation profiles.
+- Separate Open Definition 2.1 declaration so FAIR is not conflated with open.
+- Resource identifiers, media types, metadata links, licenses, and conformance
+  references.
+- `fair-documented/` source registry, standards crosswalk, evidence rules,
+  optional ISA profile, roadmap, and RO-Crate 1.3 metadata.
+- Behavioral validator tests and reproducible dependency ranges.
+
+### Changed
+
+- Renamed the canonical root manifest from `FAIR.md` to the specification's
+  required lowercase `fair.md`.
+- Replaced unsupported repository-wide positive claims with evidence-backed,
+  conservative results.
+- Reclassified `/.well-known/fair.md` as experimental until an RFC 8615
+  registration exists.
+- CI now validates the schema and runs the test suite before validating manifests.
+
+### Fixed
+
+- URI and calendar-date formats are now actually checked.
+- Duplicate YAML keys, duplicate resource IDs, unknown profile targets, invalid
+  ORCID checksums, malformed DOIs, invalid custom companions, contradictory
+  openness declarations, and missing local references now fail validation.
+- Corrected contradictory licensing and nonexistent companion declarations in
+  the Neuronautix example.
+- Replaced the schema's broken `$id` with a raw canonical URL.
+
 ## [0.2] — 2026-06-08
 
 Minor, backward-compatible release: existing v0.1 manifests remain conformant
@@ -62,3 +99,4 @@ and `fair_md_version: "0.1"` is still accepted.
 
 [0.2]: https://github.com/Neuronautix/FAIR.md/releases/tag/v0.2
 [0.1]: https://github.com/Neuronautix/FAIR.md/releases/tag/v0.1
+[0.3]: https://github.com/Neuronautix/FAIR.md/compare/v0.2...HEAD

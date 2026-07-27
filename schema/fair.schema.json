@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/Neuronautix/FAIR.md/schema/fair.schema.json",
+  "$id": "https://raw.githubusercontent.com/Neuronautix/FAIR.md/main/schema/fair.schema.json",
   "title": "fair.md YAML front-matter schema",
-  "description": "JSON Schema (draft 2020-12) for the YAML front matter of a fair.md file conforming to the fair.md specification v0.2. Apply to the parsed YAML object (the front-matter block between the --- delimiters).",
+  "description": "JSON Schema (draft 2020-12) for fair.md YAML front matter. Versions 0.1 and 0.2 remain supported; version 0.3 adds evidence-backed assessments, implementation profiles, and a separate openness declaration.",
   "type": "object",
   "required": [
     "fair_md_version",
@@ -22,8 +22,8 @@
   "properties": {
     "fair_md_version": {
       "type": "string",
-      "description": "Version of the fair.md specification this file conforms to. '0.1' remains accepted for backward compatibility.",
-      "enum": ["0.1", "0.2"]
+      "description": "Version of the fair.md specification this file conforms to. Versions 0.1 and 0.2 remain accepted for backward compatibility.",
+      "enum": ["0.1", "0.2", "0.3"]
     },
     "title": {
       "type": "string",
@@ -59,7 +59,7 @@
           "oneOf": [
             {
               "type": "string",
-              "minLength": 1,
+              "pattern": "^10\\.[0-9]{4,9}/\\S+$",
               "description": "DOI if minted, e.g. '10.5281/zenodo.1234567'."
             },
             {
@@ -160,6 +160,43 @@
                 "type": "null"
               }
             ]
+          },
+          "identifier": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uri"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Globally unique, preferably persistent and resolvable identifier for this resource."
+          },
+          "media_type": {
+            "type": "string",
+            "minLength": 1,
+            "description": "IANA media type for the resource representation."
+          },
+          "metadata": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/reference"
+            },
+            "description": "Metadata records that explicitly describe this resource."
+          },
+          "license": {
+            "type": "string",
+            "minLength": 1,
+            "description": "SPDX identifier or license URI applying to this resource."
+          },
+          "conforms_to": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            },
+            "description": "Persistent identifiers of standards or profiles implemented by this resource."
           }
         }
       }
@@ -168,8 +205,15 @@
       "type": "array",
       "description": "Controlled vocabularies, ontologies, and data standards referenced.",
       "items": {
-        "type": "string",
-        "minLength": 1
+        "oneOf": [
+          {
+            "type": "string",
+            "minLength": 1
+          },
+          {
+            "$ref": "#/$defs/identifiedVocabulary"
+          }
+        ]
       }
     },
     "fair_assessment": {
@@ -189,16 +233,16 @@
           "additionalProperties": false,
           "properties": {
             "F1_globally_unique_persistent_id": {
-              "$ref": "#/$defs/fairStatus"
+              "$ref": "#/$defs/assessmentEntry"
             },
             "F2_rich_metadata": {
-              "$ref": "#/$defs/fairStatus"
+              "$ref": "#/$defs/assessmentEntry"
             },
             "F3_metadata_references_data_id": {
-              "$ref": "#/$defs/fairStatus"
+              "$ref": "#/$defs/assessmentEntry"
             },
             "F4_indexed_searchable": {
-              "$ref": "#/$defs/fairStatus"
+              "$ref": "#/$defs/assessmentEntry"
             }
           }
         },
@@ -213,16 +257,16 @@
           "additionalProperties": false,
           "properties": {
             "A1_retrievable_by_id_open_protocol": {
-              "$ref": "#/$defs/fairStatus"
+              "$ref": "#/$defs/assessmentEntry"
             },
             "A1.1_protocol_open_free": {
-              "$ref": "#/$defs/fairStatus"
+              "$ref": "#/$defs/assessmentEntry"
             },
             "A1.2_auth_where_needed": {
-              "$ref": "#/$defs/fairStatus"
+              "$ref": "#/$defs/assessmentEntry"
             },
             "A2_metadata_persist_beyond_data": {
-              "$ref": "#/$defs/fairStatus"
+              "$ref": "#/$defs/assessmentEntry"
             }
           }
         },
@@ -236,13 +280,13 @@
           "additionalProperties": false,
           "properties": {
             "I1_formal_accessible_knowledge_representation": {
-              "$ref": "#/$defs/fairStatus"
+              "$ref": "#/$defs/assessmentEntry"
             },
             "I2_FAIR_vocabularies": {
-              "$ref": "#/$defs/fairStatus"
+              "$ref": "#/$defs/assessmentEntry"
             },
             "I3_qualified_references": {
-              "$ref": "#/$defs/fairStatus"
+              "$ref": "#/$defs/assessmentEntry"
             }
           }
         },
@@ -257,16 +301,16 @@
           "additionalProperties": false,
           "properties": {
             "R1_plurality_of_attributes": {
-              "$ref": "#/$defs/fairStatus"
+              "$ref": "#/$defs/assessmentEntry"
             },
             "R1.1_clear_data_usage_license": {
-              "$ref": "#/$defs/fairStatus"
+              "$ref": "#/$defs/assessmentEntry"
             },
             "R1.2_detailed_provenance": {
-              "$ref": "#/$defs/fairStatus"
+              "$ref": "#/$defs/assessmentEntry"
             },
             "R1.3_domain_community_standards": {
-              "$ref": "#/$defs/fairStatus"
+              "$ref": "#/$defs/assessmentEntry"
             }
           }
         }
@@ -274,7 +318,9 @@
     },
     "companions": {
       "type": "object",
-      "additionalProperties": true,
+      "additionalProperties": {
+        "$ref": "#/$defs/companionPath"
+      },
       "description": "Paths to companion machine-readable artifacts, or null if absent.",
       "properties": {
         "trust": {
@@ -297,6 +343,49 @@
         }
       }
     },
+    "profiles": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Community or implementation profiles used to turn the generic FAIR principles into concrete choices.",
+      "items": {
+        "type": "object",
+        "required": ["name", "identifier", "status", "applies_to"],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "identifier": {
+            "type": "string",
+            "format": "uri"
+          },
+          "registry": {
+            "type": "string",
+            "format": "uri"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["adopted", "aligned", "planned", "not-applicable"]
+          },
+          "applies_to": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "openness": {
+      "$ref": "#/$defs/opennessDeclaration"
+    },
     "maturity": {
       "type": "string",
       "enum": ["prototype", "beta", "stable"],
@@ -309,11 +398,202 @@
       "description": "ISO 8601 date (YYYY-MM-DD) of the last honest review."
     }
   },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "fair_md_version": {
+            "const": "0.3"
+          }
+        },
+        "required": ["fair_md_version"]
+      },
+      "then": {
+        "required": ["profiles", "openness"],
+        "properties": {
+          "data_resources": {
+            "items": {
+              "required": ["identifier", "media_type", "metadata", "license"]
+            }
+          },
+          "vocabularies": {
+            "items": {
+              "$ref": "#/$defs/identifiedVocabulary"
+            }
+          },
+          "fair_assessment": {
+            "properties": {
+              "findable": {
+                "additionalProperties": {
+                  "$ref": "#/$defs/evidencedAssessment"
+                }
+              },
+              "accessible": {
+                "additionalProperties": {
+                  "$ref": "#/$defs/evidencedAssessment"
+                }
+              },
+              "interoperable": {
+                "additionalProperties": {
+                  "$ref": "#/$defs/evidencedAssessment"
+                }
+              },
+              "reusable": {
+                "additionalProperties": {
+                  "$ref": "#/$defs/evidencedAssessment"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
   "$defs": {
     "fairStatus": {
       "type": "string",
       "enum": ["yes", "partial", "planned", "no", "n/a"],
       "description": "FAIR self-assessment status: yes | partial | planned | no | n/a"
+    },
+    "assessmentEntry": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/fairStatus"
+        },
+        {
+          "$ref": "#/$defs/evidencedAssessment"
+        }
+      ]
+    },
+    "evidencedAssessment": {
+      "type": "object",
+      "required": ["status", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/fairStatus"
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        },
+        "metric_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Assessment indicator identifiers, preferably from the RDA FAIR Data Maturity Model."
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["id", "type"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/reference"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "automated-test",
+            "metadata-record",
+            "persistent-identifier",
+            "policy",
+            "provenance",
+            "registry-record",
+            "standard",
+            "other"
+          ]
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "reference": {
+      "type": "string",
+      "pattern": "^(/|https?://)",
+      "description": "Root-relative path or absolute HTTP(S) URI."
+    },
+    "identifiedVocabulary": {
+      "type": "object",
+      "required": ["name", "identifier"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "identifier": {
+          "type": "string",
+          "format": "uri"
+        },
+        "version": {
+          "type": "string"
+        },
+        "registry": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "opennessDeclaration": {
+      "type": "object",
+      "required": [
+        "open_definition_version",
+        "status",
+        "license_status",
+        "access",
+        "machine_readable",
+        "open_format",
+        "source_available",
+        "evidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "open_definition_version": {
+          "type": "string",
+          "const": "2.1"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["conformant", "partly-conformant", "not-conformant", "not-assessed"]
+        },
+        "license_status": {
+          "type": "string",
+          "enum": ["open", "mixed", "restricted", "unspecified"]
+        },
+        "access": {
+          "type": "string",
+          "enum": ["open", "conditional", "restricted", "closed"]
+        },
+        "machine_readable": {
+          "type": "boolean"
+        },
+        "open_format": {
+          "type": "boolean"
+        },
+        "source_available": {
+          "type": "boolean"
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/reference"
+          }
+        }
+      }
     },
     "companionPath": {
       "oneOf": [

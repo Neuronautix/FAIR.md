@@ -9,14 +9,18 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
       - name: Install dependencies
-        run: pip install pyyaml jsonschema
+        run: pip install -r requirements.txt
       - name: Check the JSON Schema is well-formed
-        run: python -c "import json; json.load(open('schema/fair.schema.json'))"
+        run: python -c "import json; from jsonschema import Draft202012Validator; Draft202012Validator.check_schema(json.load(open('schema/fair.schema.json', encoding='utf-8')))"
+      - name: Run validator tests
+        run: python -m unittest discover -s tests -v
       - name: Validate example manifests
         run: python tools/validate_fair.py

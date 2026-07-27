@@ -1,20 +1,17 @@
 ---
-# This is the fair.md FAIR manifest for the fair.md repository itself — a real,
-# conformant manifest (not the template). The fill-in template lives at
-# template/fair.md. Specification: SPEC.md. Schema: schema/fair.schema.json.
-
-fair_md_version: "0.2"
+# Evidence-backed v0.3 manifest for this repository. This is not a certification.
+fair_md_version: "0.3"
 title: "fair.md — a FAIR manifest convention"
 description: >
   The fair.md convention: a lightweight, human- and machine-readable FAIR
   manifest placed at the root of a repository or website. This repository holds
-  the formal specification, a fill-in template, a JSON Schema for the YAML front
-  matter, a reference example, and a validator with CI.
+  the specification, schema, template, examples, validator, and a source-backed
+  FAIR documentation pack.
 identifiers:
   repository: "https://github.com/Neuronautix/FAIR.md"
   homepage: "https://github.com/Neuronautix/FAIR.md"
   canonical: "https://raw.githubusercontent.com/Neuronautix/FAIR.md/main/FAIR.md"
-  doi: null            # not yet minted — recommend archiving a release to Zenodo for a DOI
+  doi: null
 maintainers:
   - name: "Damien Huzard, PhD"
     role: "author, specification editor, maintainer"
@@ -24,79 +21,233 @@ license:
   content: "Apache-2.0"
   code: "Apache-2.0"
 
-# ── What "data" this manifest covers (the FAIR objects) ──
-# This repo's "data" is the convention itself: spec, schema, template, example, tooling.
 data_resources:
   - id: "specification"
     path: "/SPEC.md"
     type: "formal specification of the fair.md convention (Markdown)"
     topics: ["FAIR", "metadata", "specification"]
+    identifier: "https://raw.githubusercontent.com/Neuronautix/FAIR.md/main/SPEC.md"
+    media_type: "text/markdown"
+    metadata: ["/FAIR.md", "/CITATION.cff"]
+    license: "Apache-2.0"
+    conforms_to: ["https://semver.org/spec/v2.0.0.html"]
   - id: "schema"
     path: "/schema/fair.schema.json"
     type: "JSON Schema (draft 2020-12) for the YAML front matter"
+    identifier: "https://raw.githubusercontent.com/Neuronautix/FAIR.md/main/schema/fair.schema.json"
+    media_type: "application/schema+json"
+    metadata: ["/FAIR.md"]
+    license: "Apache-2.0"
+    conforms_to: ["https://json-schema.org/draft/2020-12/schema"]
   - id: "template"
     path: "/template/fair.md"
     type: "fill-in template with placeholder values and inline guidance"
+    identifier: "https://raw.githubusercontent.com/Neuronautix/FAIR.md/main/template/fair.md"
+    media_type: "text/markdown"
+    metadata: ["/FAIR.md"]
+    license: "Apache-2.0"
   - id: "examples"
     path: "/examples/"
     type: "reference fair.md manifests (worked examples)"
     count: 1
+    identifier: "https://github.com/Neuronautix/FAIR.md/tree/main/examples"
+    media_type: "text/markdown"
+    metadata: ["/FAIR.md"]
+    license: "Apache-2.0"
   - id: "validator"
     path: "/tools/"
     type: "Python validator for fair.md front matter (pyyaml + jsonschema)"
+    identifier: "https://github.com/Neuronautix/FAIR.md/tree/main/tools"
+    media_type: "text/x-python"
+    metadata: ["/FAIR.md", "/CITATION.cff"]
+    license: "Apache-2.0"
+  - id: "fair-documentation"
+    path: "/fair-documented/"
+    type: "source registry, crosswalk, evidence rules, profiles, roadmap, and RO-Crate"
+    identifier: "https://github.com/Neuronautix/FAIR.md/tree/main/fair-documented"
+    media_type: "application/ld+json"
+    metadata: ["/FAIR.md", "/fair-documented/ro-crate-metadata.json"]
+    license: "Apache-2.0"
+    conforms_to: ["https://w3id.org/ro/crate/1.3"]
 
-# ── Vocabularies / standards referenced (Interoperability) ──
 vocabularies:
-  - "FAIR Guiding Principles (Wilkinson et al., 2016)"
-  - "SPDX License List"
-  - "Citation File Format (CFF) 1.2.0"
-  - "JSON Schema (draft 2020-12)"
-  - "Keep a Changelog 1.1.0; Semantic Versioning 2.0.0"
+  - name: "FAIR Guiding Principles"
+    identifier: "https://doi.org/10.1038/sdata.2016.18"
+    version: "2016"
+  - name: "RDA FAIR Data Maturity Model"
+    identifier: "https://doi.org/10.15497/rda00050"
+    version: "1.0"
+  - name: "SPDX License List"
+    identifier: "https://spdx.org/licenses/"
+  - name: "Citation File Format"
+    identifier: "https://citation-file-format.github.io/"
+    version: "1.2.0"
+  - name: "JSON Schema"
+    identifier: "https://json-schema.org/draft/2020-12/schema"
+    version: "2020-12"
+  - name: "RO-Crate"
+    identifier: "https://w3id.org/ro/crate/1.3"
+    version: "1.3"
 
-# ── FAIR self-assessment ──
-# status enum: yes | partial | planned | no | n/a
-# Transparent SELF-assessment of THIS repository, not a certified audit.
+# Evidence documents what supports each result and what remains incomplete.
 fair_assessment:
   findable:
-    F1_globally_unique_persistent_id: "partial"   # canonical GitHub/raw URLs; no DOI yet
-    F2_rich_metadata: "yes"                        # this manifest + CITATION.cff + README/SPEC
-    F3_metadata_references_data_id: "yes"          # data_resources reference repo paths/ids
-    F4_indexed_searchable: "yes"                   # public on GitHub (indexed/searchable)
+    F1_globally_unique_persistent_id:
+      status: "partial"
+      metric_ids: ["RDA-F1-01M", "RDA-F1-01D", "RDA-F1-02M", "RDA-F1-02D"]
+      evidence:
+        - id: "https://github.com/Neuronautix/FAIR.md"
+          type: "persistent-identifier"
+          note: "Globally unique repository URLs exist, but no archival DOI is minted."
+    F2_rich_metadata:
+      status: "partial"
+      metric_ids: ["RDA-F2-01M"]
+      evidence:
+        - id: "/FAIR.md"
+          type: "metadata-record"
+          note: "Project and resource metadata are present; distribution detail remains limited."
+    F3_metadata_references_data_id:
+      status: "partial"
+      metric_ids: ["RDA-F3-01M"]
+      evidence:
+        - id: "/FAIR.md"
+          type: "metadata-record"
+          note: "Resources have identifiers, but most do not yet have independent metadata PIDs."
+    F4_indexed_searchable:
+      status: "partial"
+      metric_ids: ["RDA-F4-01M"]
+      evidence:
+        - id: "https://github.com/Neuronautix/FAIR.md"
+          type: "registry-record"
+          note: "GitHub is searchable; no research-data catalog record exists yet."
   accessible:
-    A1_retrievable_by_id_open_protocol: "yes"      # HTTPS + git, no authentication
-    A1.1_protocol_open_free: "yes"
-    A1.2_auth_where_needed: "n/a"                  # all content is public
-    A2_metadata_persist_beyond_data: "partial"     # git history; no formal tombstoning
+    A1_retrievable_by_id_open_protocol:
+      status: "yes"
+      metric_ids: ["RDA-A1-02M", "RDA-A1-03M"]
+      evidence:
+        - id: "https://github.com/Neuronautix/FAIR.md"
+          type: "automated-test"
+          note: "Repository and raw resources are retrievable over HTTPS and git."
+    A1.1_protocol_open_free:
+      status: "yes"
+      metric_ids: ["RDA-A1.1-01M"]
+      evidence:
+        - id: "https://www.rfc-editor.org/rfc/rfc9110"
+          type: "standard"
+          note: "HTTPS semantics are openly standardized and broadly implementable."
+    A1.2_auth_where_needed:
+      status: "n/a"
+      metric_ids: ["RDA-A1.2-01D"]
+      evidence:
+        - id: "https://github.com/Neuronautix/FAIR.md"
+          type: "policy"
+          note: "All declared resources are public; no controlled-access data are in scope."
+    A2_metadata_persist_beyond_data:
+      status: "partial"
+      metric_ids: ["RDA-A2-01M"]
+      evidence:
+        - id: "/fair-documented/roadmap.md"
+          type: "policy"
+          note: "Git history exists; an independent retention and tombstone policy is planned."
   interoperable:
-    I1_formal_accessible_knowledge_representation: "partial"  # YAML validated by JSON Schema; no JSON-LD/RDF yet
-    I2_FAIR_vocabularies: "partial"                # standards referenced, not embedded as ontology IRIs
-    I3_qualified_references: "yes"                  # qualified links to llms.txt, RO-Crate, codemeta, CFF, Wilkinson 2016
+    I1_formal_accessible_knowledge_representation:
+      status: "partial"
+      metric_ids: ["RDA-I1-01M"]
+      evidence:
+        - id: "/schema/fair.schema.json"
+          type: "standard"
+        - id: "/fair-documented/ro-crate-metadata.json"
+          type: "metadata-record"
+          note: "JSON Schema and one JSON-LD crate exist; full semantic export is not implemented."
+    I2_FAIR_vocabularies:
+      status: "partial"
+      metric_ids: ["RDA-I2-01M"]
+      evidence:
+        - id: "/fair-documented/sources/registry.yaml"
+          type: "registry-record"
+          note: "Standards have resolvable IDs; field-level term mappings remain incomplete."
+    I3_qualified_references:
+      status: "partial"
+      metric_ids: ["RDA-I3-01M"]
+      evidence:
+        - id: "/fair-documented/ro-crate-metadata.json"
+          type: "metadata-record"
+          note: "RO-Crate supplies typed relations for the documentation pack only."
   reusable:
-    R1_plurality_of_attributes: "yes"
-    R1.1_clear_data_usage_license: "yes"           # Apache-2.0 (LICENSE + CITATION.cff)
-    R1.2_detailed_provenance: "partial"            # authorship + git history + CHANGELOG; no formal PROV
-    R1.3_domain_community_standards: "yes"         # SPDX, CFF, JSON Schema, Keep a Changelog, SemVer
+    R1_plurality_of_attributes:
+      status: "partial"
+      metric_ids: ["RDA-R1-01M"]
+      evidence:
+        - id: "/FAIR.md"
+          type: "metadata-record"
+          note: "Core attributes exist; creators, dates, checksums, and distributions need expansion."
+    R1.1_clear_data_usage_license:
+      status: "partial"
+      metric_ids: ["RDA-R1.1-01M", "RDA-R1.1-02M"]
+      evidence:
+        - id: "/LICENSE"
+          type: "policy"
+          note: "Apache-2.0 text is present, but content/data/database scopes need explicit treatment."
+    R1.2_detailed_provenance:
+      status: "partial"
+      metric_ids: ["RDA-R1.2-01M", "RDA-R1.2-02M"]
+      evidence:
+        - id: "/CHANGELOG.md"
+          type: "provenance"
+        - id: "https://github.com/Neuronautix/FAIR.md/commits/main/"
+          type: "provenance"
+          note: "Human/git provenance exists; a PROV-O activity graph is not yet present."
+    R1.3_domain_community_standards:
+      status: "partial"
+      metric_ids: ["RDA-R1.3-01M", "RDA-R1.3-02M"]
+      evidence:
+        - id: "/fair-documented/crosswalk.md"
+          type: "standard"
+          note: "Crosswalk and profiles are documented; a community-approved FIP is not yet published."
 
-# ── Companion machine-readable artifacts (present or recommended) ──
 companions:
-  trust: null                              # no trust.md for this repo
-  sitemap: null                            # not a website
-  robots: null                             # not a website
-  citation_cff: "/CITATION.cff"            # present — machine-readable citation
-  codemeta: null                           # recommended for software metadata
-  ro_crate: null                           # recommended for FAIR Digital Object packaging
+  trust: null
+  sitemap: null
+  robots: null
+  citation_cff: "/CITATION.cff"
+  codemeta: null
+  ro_crate: "/fair-documented/ro-crate-metadata.json"
+  source_registry: "/fair-documented/sources/registry.yaml"
+
+profiles:
+  - name: "RDA FAIR Data Maturity Model"
+    identifier: "https://doi.org/10.15497/rda00050"
+    status: "aligned"
+    applies_to: ["specification", "schema", "template", "examples", "validator", "fair-documentation"]
+    note: "Metric IDs are used, but complete 41-indicator assessment is future work."
+  - name: "RO-Crate 1.3"
+    identifier: "https://w3id.org/ro/crate/1.3"
+    status: "adopted"
+    applies_to: ["fair-documentation"]
+
+openness:
+  open_definition_version: "2.1"
+  status: "partly-conformant"
+  license_status: "mixed"
+  access: "open"
+  machine_readable: true
+  open_format: true
+  source_available: true
+  evidence:
+    - "/LICENSE"
+    - "https://github.com/Neuronautix/FAIR.md"
+    - "/fair-documented/crosswalk.md"
 
 maturity: "beta"
-last_reviewed: "2026-06-08"
+last_reviewed: "2026-07-27"
 ---
 
 # fair.md — FAIR manifest for this repository
 
-This file is the **fair.md FAIR manifest for the fair.md repository itself**: a
-real, conformant manifest that self-declares how *Findable, Accessible,
-Interoperable, and Reusable* this project is, and where the deeper
-machine-readable affordances live. The YAML block above is the machine-readable
-part; this prose is for people.
+This is the **fair.md manifest for the fair.md repository itself**. It records
+an evidence-backed self-assessment of specific FAIR capabilities and points to
+deeper machine-readable artifacts. It is not a certification or a claim that
+every object in the repository is fully FAIR.
 
 The repository "eats its own dog food": the manifest above conforms to the very
 [specification](SPEC.md) it defines and validates against
@@ -105,29 +256,39 @@ The repository "eats its own dog food": the manifest above conforms to the very
 ## What this repository declares
 
 This repo is the home of the **fair.md convention** — a proposed convention
-(v0.2), not yet a standard. Its FAIR objects are the convention's artifacts:
+(v0.3), not yet a standard. Its declared objects are the convention's artifacts:
 
 - the formal [specification](SPEC.md),
 - the JSON Schema for the YAML front matter ([`schema/`](schema/)),
 - a fill-in [template](template/fair.md),
-- a reference [example](examples/neuronautix.fair.md), and
-- a [validator](tools/validate_fair.py) wired into CI.
+- a reference [example](examples/neuronautix.fair.md),
+- a [validator](tools/validate_fair.py) wired into CI, and
+- a [FAIR-documented source pack](fair-documented/README.md) containing the
+  authoritative source registry, standards crosswalk, evidence rules, ISA
+  profile, roadmap, and an RO-Crate 1.3 description.
 
 ## FAIR posture
 
-Discovery and accessibility are strong: every artifact has a canonical
-GitHub/raw URL over open HTTPS, and the project is publicly indexed and
-searchable. The honest gaps are: no minted DOI yet (F1 — archiving a release to
-Zenodo would close this), no JSON-LD/RDF representation (I1) and standards
-referenced rather than embedded as ontology IRIs (I2), and provenance carried by
-git history and the CHANGELOG rather than formal PROV (R1.2). Reusability is
-otherwise strong — Apache-2.0 is declared in both `LICENSE` and `CITATION.cff`,
-and the project follows SPDX, CFF, JSON Schema, Keep a Changelog, and SemVer.
+HTTPS access is strong, but the manifest intentionally records most principles
+as `partial`. There is no archival DOI, research catalog record, independent
+metadata-retention commitment, complete semantic export, formal PROV-O graph, or
+community-approved FAIR Implementation Profile. The evidence attached to each
+result identifies what exists and what remains missing.
+
+FAIR and openness are separate. The repository is openly accessible and uses
+machine-readable open formats, but its single Apache-2.0 declaration does not yet
+express separate software, documentation, data, database-rights, and third-party
+content scopes. The Open Definition posture is therefore only
+`partly-conformant`.
 
 ## Companion artifacts
 
 - **[`CITATION.cff`](CITATION.cff)** — machine-readable citation for the convention.
-- `codemeta.json` and an RO-Crate are recommended next steps (currently `null`).
+- **[`fair-documented/ro-crate-metadata.json`](fair-documented/ro-crate-metadata.json)**
+  — RO-Crate 1.3 metadata for the source pack.
+- **[`fair-documented/sources/registry.yaml`](fair-documented/sources/registry.yaml)**
+  — versioned registry of authoritative sources.
+- `codemeta.json` remains planned.
 
 ## How to adopt fair.md
 
@@ -140,7 +301,7 @@ instructions in the [README](README.md#how-to-adopt-fairmd).
 See [`CITATION.cff`](CITATION.cff). In plain text:
 
 > Huzard, D. (2026). *fair.md — a portable, human- and machine-readable FAIR
-> manifest* (v0.2). https://github.com/Neuronautix/FAIR.md
+> manifest* (v0.3). https://github.com/Neuronautix/FAIR.md
 
 ## Changelog
 

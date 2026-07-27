@@ -1,16 +1,16 @@
 ---
 # fair.md — a portable, human- and machine-readable FAIR manifest for a repository
-# Proposed convention (v0.2). Specification: https://github.com/Neuronautix/FAIR.md
+# Proposed convention (v0.3). Specification: https://github.com/Neuronautix/FAIR.md
 # Reference implementation: https://neuronautix.com/fair.md
 #
 # HOW TO USE THIS TEMPLATE
 # 1. Copy this file to the root of your repository/site as `fair.md`.
 # 2. Replace every <PLACEHOLDER> with your project's values.
-# 3. Fill in fair_assessment honestly — partial/planned are features, not failures.
+# 3. Attach evidence to every FAIR result; bare statuses are invalid in v0.3.
 # 4. Serve at https://yourdomain/fair.md.
 # 5. Review periodically; update last_reviewed each time.
 
-fair_md_version: "0.2"
+fair_md_version: "0.3"
 title: "<Repository or Dataset Title>"
 description: >
   <A paragraph-length description of what this repository contains and what
@@ -46,39 +46,76 @@ data_resources:
     type: "<file format and nature, e.g. 'CSV tabular data, sample metadata'>"
     topics: ["<topic1>", "<topic2>"]   # optional; remove if not applicable
     count: null                        # optional; number of items/files
+    identifier: null                   # resolvable PID/URI; null while unavailable
+    media_type: "<text/csv>"
+    metadata: ["/<metadata-record.json>"]
+    license: "<CC-BY-4.0>"
+    conforms_to: ["<https://identifier.for/community-standard>"]
   # Add more resources as needed
 
 # ── Vocabularies / standards referenced (Interoperability) ──
 vocabularies:
-  - "<Standard or ontology name, e.g. 'schema.org'>"
-  - "<e.g. 'FAIR Guiding Principles (Wilkinson et al., 2016)'>"
-  # Use [] if no vocabularies apply (unusual — but the field must be present)
+  - name: "<Standard or ontology name>"
+    identifier: "<https://persistent.identifier/for/standard>"
+    version: "<version>"               # optional
+    registry: "<https://fairsharing.org/...>"  # optional
 
 # ── FAIR self-assessment ──
 # status enum: yes | partial | planned | no | n/a
 # This is a TRANSPARENT SELF-ASSESSMENT, not a certified audit.
-# Be honest: partial and planned are informative and improvable.
-# Add a comment on each line explaining why.
+# Evidence type: automated-test | metadata-record | persistent-identifier |
+# policy | provenance | registry-record | standard | other
 fair_assessment:
   findable:
-    F1_globally_unique_persistent_id: "<yes|partial|planned|no|n/a>"   # DOIs, persistent URLs?
-    F2_rich_metadata: "<yes|partial|planned|no|n/a>"                    # per-item metadata?
-    F3_metadata_references_data_id: "<yes|partial|planned|no|n/a>"     # metadata links back to data?
-    F4_indexed_searchable: "<yes|partial|planned|no|n/a>"              # sitemap, registry, index?
+    F1_globally_unique_persistent_id:
+      status: "<yes|partial|planned|no|n/a>"
+      metric_ids: ["RDA-F1-01M", "RDA-F1-01D"]
+      evidence: [{id: "<https://pid.example/object>", type: "persistent-identifier"}]
+    F2_rich_metadata:
+      status: "<yes|partial|planned|no|n/a>"
+      evidence: [{id: "/<metadata-record>", type: "metadata-record"}]
+    F3_metadata_references_data_id:
+      status: "<yes|partial|planned|no|n/a>"
+      evidence: [{id: "/<metadata-record>", type: "metadata-record"}]
+    F4_indexed_searchable:
+      status: "<yes|partial|planned|no|n/a>"
+      evidence: [{id: "<https://catalog.example/record>", type: "registry-record"}]
   accessible:
-    A1_retrievable_by_id_open_protocol: "<yes|partial|planned|no|n/a>" # HTTPS, OAI-PMH, etc.?
-    A1.1_protocol_open_free: "<yes|partial|planned|no|n/a>"            # is the protocol open?
-    A1.2_auth_where_needed: "<yes|partial|planned|no|n/a>"             # auth available if needed?
-    A2_metadata_persist_beyond_data: "<yes|partial|planned|no|n/a>"    # tombstoning / archiving?
+    A1_retrievable_by_id_open_protocol:
+      status: "<yes|partial|planned|no|n/a>"
+      evidence: [{id: "<https://access.example/object>", type: "automated-test"}]
+    A1.1_protocol_open_free:
+      status: "<yes|partial|planned|no|n/a>"
+      evidence: [{id: "<https://protocol-spec.example>", type: "standard"}]
+    A1.2_auth_where_needed:
+      status: "<yes|partial|planned|no|n/a>"
+      evidence: [{id: "/<access-policy>", type: "policy"}]
+    A2_metadata_persist_beyond_data:
+      status: "<yes|partial|planned|no|n/a>"
+      evidence: [{id: "/<preservation-policy>", type: "policy"}]
   interoperable:
-    I1_formal_accessible_knowledge_representation: "<yes|partial|planned|no|n/a>"  # JSON-LD, RDF, etc.?
-    I2_FAIR_vocabularies: "<yes|partial|planned|no|n/a>"               # ontologies embedded?
-    I3_qualified_references: "<yes|partial|planned|no|n/a>"            # citations / links to related data?
+    I1_formal_accessible_knowledge_representation:
+      status: "<yes|partial|planned|no|n/a>"
+      evidence: [{id: "/<metadata.jsonld>", type: "metadata-record"}]
+    I2_FAIR_vocabularies:
+      status: "<yes|partial|planned|no|n/a>"
+      evidence: [{id: "<https://vocabulary.example>", type: "registry-record"}]
+    I3_qualified_references:
+      status: "<yes|partial|planned|no|n/a>"
+      evidence: [{id: "/<metadata.jsonld>", type: "metadata-record"}]
   reusable:
-    R1_plurality_of_attributes: "<yes|partial|planned|no|n/a>"         # rich descriptive metadata?
-    R1.1_clear_data_usage_license: "<yes|partial|planned|no|n/a>"      # SPDX license declared?
-    R1.2_detailed_provenance: "<yes|partial|planned|no|n/a>"           # authorship, methods, history?
-    R1.3_domain_community_standards: "<yes|partial|planned|no|n/a>"    # community metadata standards met?
+    R1_plurality_of_attributes:
+      status: "<yes|partial|planned|no|n/a>"
+      evidence: [{id: "/<metadata-record>", type: "metadata-record"}]
+    R1.1_clear_data_usage_license:
+      status: "<yes|partial|planned|no|n/a>"
+      evidence: [{id: "/LICENSE", type: "policy"}]
+    R1.2_detailed_provenance:
+      status: "<yes|partial|planned|no|n/a>"
+      evidence: [{id: "/<provenance.jsonld>", type: "provenance"}]
+    R1.3_domain_community_standards:
+      status: "<yes|partial|planned|no|n/a>"
+      evidence: [{id: "<https://profile.example>", type: "standard"}]
 
 # ── Companion machine-readable artifacts (present or recommended) ──
 # Use null for items you plan to add; do not omit lines — absence is informative.
@@ -89,6 +126,25 @@ companions:
   citation_cff: null     # "/CITATION.cff" — machine-readable citation (recommended)
   codemeta: null         # "/codemeta.json" — software metadata
   ro_crate: null         # "/ro-crate-metadata.json" — FAIR Digital Object packaging
+
+# Concrete implementation choices; these are not assessment scores.
+profiles:
+  - name: "<Community or domain profile>"
+    identifier: "<https://persistent.identifier/profile>"
+    registry: "<https://fairsharing.org/...>"  # optional
+    status: "<adopted|aligned|planned|not-applicable>"
+    applies_to: ["<resource-id>"]
+
+# Openness is separate from FAIR. Restricted-but-FAIR data are valid.
+openness:
+  open_definition_version: "2.1"
+  status: "<conformant|partly-conformant|not-conformant|not-assessed>"
+  license_status: "<open|mixed|restricted|unspecified>"
+  access: "<open|conditional|restricted|closed>"
+  machine_readable: true
+  open_format: true
+  source_available: true
+  evidence: ["/LICENSE"]
 
 maturity: "prototype"    # prototype | beta | stable
 last_reviewed: "<YYYY-MM-DD>"
@@ -102,7 +158,7 @@ and knowledge in this repository are, and where the deeper machine-readable
 affordances live. The YAML block above is the machine-readable part; this prose
 is for people.
 
-It is a **proposed convention (v0.2)**. See the
+It is a **proposed convention (v0.3)**. See the
 [fair.md specification](https://github.com/Neuronautix/FAIR.md) and the
 [reference implementation](https://neuronautix.com/fair.md).
 

@@ -1,16 +1,16 @@
-# fair.md — Formal Specification v0.2
+# fair.md — Formal Specification v0.3
 
-**Status:** Proposed convention — v0.2
-**Date:** 2026-06-08
+**Status:** Proposed convention — v0.3
+**Date:** 2026-07-27
 **Author:** Damien Huzard, PhD (ORCID [0000-0003-4820-7951](https://orcid.org/0000-0003-4820-7951)), Neuronautix
 **License:** Apache-2.0
-**Reference implementation:** <https://neuronautix.com/fair.md>
+**Reference implementation:** <https://raw.githubusercontent.com/Neuronautix/FAIR.md/main/FAIR.md>
 
 ---
 
 ## 1. Abstract
 
-`fair.md` is a lightweight, human- and machine-readable FAIR manifest placed at
+`FAIR.md` is a lightweight, human- and machine-readable FAIR manifest placed at
 the root of a repository or website. It declares what data a project holds, gives
 a structured self-assessment of the project's FAIR posture (Findable, Accessible,
 Interoperable, Reusable), and points to deeper machine-readable affordances. It
@@ -23,32 +23,33 @@ codemeta.json, or CITATION.cff.
 
 ### 2.1 Primary location
 
-A conforming `fair.md` file MUST be placed at the root of the repository or
+A conforming `FAIR.md` file MUST be placed at the root of the repository or
 website and served at:
 
 ```
-https://<domain>/fair.md
+https://<domain>/FAIR.md
 ```
 
 For a Git repository without an associated web host, the file MUST be at the
 repository root so it is accessible at:
 
 ```
-https://raw.githubusercontent.com/<org>/<repo>/main/fair.md
+https://raw.githubusercontent.com/<org>/<repo>/main/FAIR.md
 ```
 (or the equivalent for other Git hosting platforms).
 
-### 2.2 Optional well-known redirect
+### 2.2 Experimental well-known redirect
 
-A server MAY additionally respond to:
+A deployment may experiment with:
 
 ```
 https://<domain>/.well-known/fair.md
 ```
 
-with a redirect (HTTP 301 or 302) to `https://<domain>/fair.md`. This provides a
-stable, programmatically discoverable endpoint for crawlers and FAIR assessment
-tools.
+redirecting to `https://<domain>/FAIR.md`, but this is **not a normative
+discovery mechanism**. `fair.md` is not currently registered in the IANA
+Well-Known URI registry. Implementers MUST NOT present `/.well-known/fair.md` as
+standardized unless it is registered under RFC 8615.
 
 ### 2.3 Content-Type
 
@@ -59,7 +60,7 @@ When served over HTTP, the file SHOULD be served with Content-Type
 
 ## 3. File format
 
-A `fair.md` file is a **Markdown document with a YAML front-matter block**.
+A `FAIR.md` file is a **Markdown document with a YAML front-matter block**.
 
 ### 3.1 Structure
 
@@ -87,19 +88,19 @@ The file MUST be encoded in UTF-8. Line endings SHOULD be LF (`\n`).
 
 ### 4.1 Required fields
 
-The following fields are REQUIRED in every conforming `fair.md`.
+The following fields are REQUIRED in every conforming `FAIR.md`.
 
 #### `fair_md_version`
 
 - **Type:** string
 - **Required:** yes
-- **Allowed values:** `"0.2"` (current) or `"0.1"` (still accepted; the changes
-  in 0.2 are backward-compatible)
+- **Allowed values:** `"0.3"` (current), `"0.2"`, or `"0.1"` (legacy versions
+  remain accepted)
 - **Description:** The version of the fair.md specification this file conforms
   to. MUST be a quoted string.
 
 ```yaml
-fair_md_version: "0.2"
+fair_md_version: "0.3"
 ```
 
 #### `title`
@@ -137,14 +138,14 @@ description: >
 |---|---|---|---|
 | `repository` | URI string | yes | URL of the source code / data repository (e.g. GitHub URL) |
 | `homepage` | URI string | yes | Canonical homepage of the project |
-| `canonical` | URI string | yes | The stable URL where this `fair.md` file is served |
+| `canonical` | URI string | yes | The stable URL where this `FAIR.md` file is served |
 | `doi` | string or `null` | yes | DOI if minted (e.g. `"10.5281/zenodo.1234567"`); `null` if not yet assigned |
 
 ```yaml
 identifiers:
   repository: "https://github.com/myorg/myproject"
   homepage: "https://myproject.example.org"
-  canonical: "https://myproject.example.org/fair.md"
+  canonical: "https://myproject.example.org/FAIR.md"
   doi: null
 ```
 
@@ -201,6 +202,11 @@ license:
 | `type` | string | yes | Human-readable description of the resource type and format |
 | `topics` | sequence of strings | optional | Topical keywords |
 | `count` | integer | optional | Number of items in the collection, if applicable |
+| `identifier` | URI string or `null` | required in v0.3 | Globally unique, preferably persistent and resolvable identifier for this resource |
+| `media_type` | string | required in v0.3 | IANA media type for the representation |
+| `metadata` | sequence of references | required in v0.3 | Root-relative paths or HTTP(S) URIs of metadata records that describe this resource |
+| `license` | string | required in v0.3 | SPDX identifier or license URI applying to this resource |
+| `conforms_to` | sequence of URIs | optional | Standards or profiles implemented by this resource |
 
 ```yaml
 data_resources:
@@ -209,21 +215,37 @@ data_resources:
     type: "HDF5 electrophysiology files, NWB format"
     topics: ["electrophysiology", "calcium imaging"]
     count: 42
+    identifier: "https://doi.org/10.1234/example.recordings"
+    media_type: "application/x-hdf5"
+    metadata: ["/ro-crate-metadata.json"]
+    license: "CC-BY-4.0"
+    conforms_to: ["https://w3id.org/ro/crate/1.3"]
 ```
+
+Version 0.3 authors SHOULD additionally describe distributions, access URLs,
+checksums, byte sizes, creators, dates, and provenance in a companion such as
+DCAT 3, DataCite metadata, or RO-Crate. A repository path is a locator, not
+necessarily a persistent identifier.
 
 #### `vocabularies`
 
-- **Type:** sequence of strings
+- **Type:** sequence of strings in v0.1/v0.2; sequence of identified objects in v0.3
 - **Required:** yes (may be an empty list `[]` if none apply, but the field MUST
   be present)
 - **Description:** Controlled vocabularies, ontologies, and/or data standards
   referenced or used within this repository.
 
+Version 0.3 entries MUST contain `name` and a resolvable `identifier`; `version`
+and `registry` are optional. A label alone does not demonstrate vocabulary use
+or conformance.
+
 ```yaml
 vocabularies:
-  - "Neurodata Without Borders (NWB)"
-  - "schema.org"
-  - "FAIR Guiding Principles (Wilkinson et al., 2016)"
+  - name: "RO-Crate"
+    identifier: "https://w3id.org/ro/crate/1.3"
+    version: "1.3"
+  - name: "FAIR Guiding Principles"
+    identifier: "https://doi.org/10.1038/sdata.2016.18"
 ```
 
 #### `fair_assessment`
@@ -238,7 +260,7 @@ vocabularies:
 
 ##### Status enum
 
-Every sub-principle value MUST be one of:
+Legacy v0.1/v0.2 manifests use a scalar status. Every status MUST be one of:
 
 | Value | Meaning |
 |---|---|
@@ -247,6 +269,26 @@ Every sub-principle value MUST be one of:
 | `"planned"` | Not yet satisfied but actively planned |
 | `"no"` | Not satisfied and not currently planned |
 | `"n/a"` | Not applicable to this repository or resource type |
+
+##### Evidence-backed assessment entries (v0.3)
+
+Version 0.3 MUST represent every sub-principle as an object:
+
+| Field | Required | Description |
+|---|---|---|
+| `status` | yes | One status from the enum above |
+| `evidence` | yes | Non-empty sequence of evidence objects |
+| `metric_ids` | no | Assessment indicator IDs, preferably from the RDA FAIR Data Maturity Model |
+| `note` | no | Human-readable scope, gap, or rationale |
+
+Each evidence object MUST contain `id`, a root-relative path or absolute HTTP(S)
+URI, and `type`, one of `automated-test`, `metadata-record`,
+`persistent-identifier`, `policy`, `provenance`, `registry-record`, `standard`,
+or `other`. An optional `note` may explain what the evidence establishes.
+
+A positive result is a scoped claim, not certification. `yes` requires passing,
+target-specific evidence; `partial` MUST explain the remaining gap; `planned`
+SHOULD link to a concrete roadmap action; and `n/a` MUST include a rationale.
 
 ##### Sub-principle keys and canonical mapping
 
@@ -288,6 +330,8 @@ identifier so that automated assessment tools can map them directly.
 | `R1.2_detailed_provenance` | R1.2 | Data/metadata are associated with detailed provenance |
 | `R1.3_domain_community_standards` | R1.3 | Data/metadata meet domain-relevant community standards |
 
+Legacy v0.1/v0.2 example:
+
 ```yaml
 fair_assessment:
   findable:
@@ -309,6 +353,21 @@ fair_assessment:
     R1.1_clear_data_usage_license: "yes"
     R1.2_detailed_provenance: "planned"
     R1.3_domain_community_standards: "partial"
+```
+
+Version 0.3 example:
+
+```yaml
+fair_assessment:
+  findable:
+    F1_globally_unique_persistent_id:
+      status: "partial"
+      metric_ids: ["RDA-F1-01M", "RDA-F1-01D"]
+      evidence:
+        - id: "https://doi.org/10.1234/example"
+          type: "persistent-identifier"
+          note: "Dataset PID exists; metadata record lacks an independent PID."
+  # All remaining canonical sub-principles are required in the same form.
 ```
 
 #### `companions`
@@ -373,6 +432,34 @@ last_reviewed: "2026-06-06"
 
 ---
 
+#### `profiles` (v0.3)
+
+- **Type:** non-empty sequence of mappings
+- **Required:** v0.3 only
+- **Description:** Concrete implementation or community profiles used to
+  operationalize the generic FAIR principles.
+
+Each entry MUST contain `name`, an absolute URI `identifier`, `status`
+(`adopted | aligned | planned | not-applicable`), and a non-empty `applies_to`
+list of IDs declared in `data_resources`. `registry` and `note` are optional.
+ISA-Tab is an optional domain profile for relevant experimental data; it is not
+a universal FAIR requirement.
+
+#### `openness` (v0.3)
+
+- **Type:** mapping
+- **Required:** v0.3 only
+- **Description:** A separate Open Definition 2.1 posture. FAIR does not imply
+  open, and access-controlled data can still be FAIR.
+
+Required fields are `open_definition_version` (`"2.1"`), `status`
+(`conformant | partly-conformant | not-conformant | not-assessed`),
+`license_status`, `access`, the booleans `machine_readable`, `open_format`, and
+`source_available`, plus non-empty `evidence`. If `status` is `conformant`, the
+license and access MUST be open and all three booleans MUST be true.
+
+---
+
 ### 4.2 Optional fields
 
 Additional YAML fields MAY be added by implementers for domain-specific purposes.
@@ -406,20 +493,23 @@ The prose section MUST NOT contradict the YAML front matter.
 
 ## 6. Validation rules
 
-A `fair.md` file is considered **conformant** if:
+A `FAIR.md` file is considered **conformant** if:
 
 1. The file is valid UTF-8.
 2. The YAML front matter parses without errors.
 3. All REQUIRED fields (Section 4.1) are present.
-4. `fair_md_version` is a known version string (`"0.1"` or `"0.2"`).
-5. All `fair_assessment` values are members of the status enum
-   (`yes | partial | planned | no | n/a`).
+4. `fair_md_version` is a known version string (`"0.1"`, `"0.2"`, or `"0.3"`).
+5. Legacy `fair_assessment` values are status strings; v0.3 values are
+   evidence-backed objects containing a valid status and non-empty evidence.
 6. `maturity` is one of `prototype | beta | stable`.
-7. `last_reviewed` is a valid ISO 8601 date string in `YYYY-MM-DD` format.
-8. `identifiers.canonical` is a valid URI.
+7. `last_reviewed` is a real ISO 8601 calendar date in `YYYY-MM-DD` format.
+8. All identifier fields declared as URIs pass URI format validation.
 9. All `companions` values are either `null`, a root-relative path beginning
    with `/`, or an absolute `http(s)` URL.
 10. The prose section is present and non-empty.
+11. Mapping keys and `data_resources[].id` values are unique.
+12. In v0.3, `profiles` references only declared resource IDs and `openness`
+    passes its cross-field consistency rules.
 
 A **warning** (non-blocking) SHOULD be issued if:
 
@@ -437,17 +527,21 @@ A **warning** (non-blocking) SHOULD be issued if:
 
 | Level | Requirements |
 |---|---|
-| **Conformant** | All validation rules in Section 6 pass |
-| **Recommended** | Conformant + no warnings from Section 6 |
-| **Extended** | Recommended + `ro_crate` companion present + all FAIR sub-principles are `yes` or `n/a` |
+| **Legacy structural** | A v0.1/v0.2 manifest passes the structural rules |
+| **Evidence-backed** | A v0.3 manifest passes the structural and semantic rules, with evidence for every result |
+| **Packaged** | Evidence-backed + a valid RO-Crate companion and a versioned source registry |
+
+These are manifest conformance levels, not FAIRness scores or certification.
+No level requires all sub-principles to be `yes`; such a rule would reward
+unsupported claims and misuse of `n/a`.
 
 ### 7.2 Claiming conformance
 
 A repository claiming fair.md conformance SHOULD include in its README or
 documentation a statement such as:
 
-> This repository provides a `fair.md` FAIR manifest conforming to the fair.md
-> specification v0.2. See [fair.md](https://yourdomain/fair.md).
+> This repository provides a `FAIR.md` FAIR manifest conforming to the fair.md
+> specification v0.3. See [FAIR.md](https://yourdomain/FAIR.md).
 
 ---
 
@@ -460,12 +554,23 @@ documentation a statement such as:
 | **RO-Crate** | fair.md is a lightweight front door; `ro_crate` companion field links to the full package |
 | **FAIR Signposting** | fair.md is the Markdown counterpart to HTTP-level FAIR Signposting links |
 | **FAIR Guiding Principles (Wilkinson et al., 2016)** | Sub-principle keys map directly to F1–R1.3 |
+| **RDA FAIR Data Maturity Model** | v0.3 assessment entries can cite reusable metric identifiers |
+| **GO FAIR Implementation Profiles** | `profiles` declares concrete community implementation choices; it is not an assessment score |
+| **FAIR Cookbook** | Non-normative implementation recipes and maturity guidance |
+| **FAIRsharing** | Preferred registry for persistent identifiers of standards, databases, and policies |
+| **Open Definition 2.1** | `openness` reports permissions and technical openness separately from FAIR |
+| **ISA-Tab / ISA-JSON** | Optional Investigation–Study–Assay domain profile for applicable experimental data |
+| **DCAT 3 / DataCite** | Recommended companions for dataset, distribution, catalog, and citation metadata |
 | **trust.md** | Companion convention covering epistemic provenance and confidence (Section 4.1: `companions.trust`) |
 
 ---
 
 ## 9. Changelog
 
+- **v0.3 (2026-07-27)** — evidence-backed assessment objects, identified
+  vocabularies, richer resource metadata, implementation profiles, a separate
+  Open Definition declaration, canonical `FAIR.md` filename enforcement, real URI/date
+  checks, duplicate-key rejection, and source-backed FAIR documentation.
 - **v0.2 (2026-06-08)** — backward-compatible additions: `companions` values may
   now be absolute `http(s)` URLs in addition to root-relative paths (§4.1, §6
   rule 9); `fair_md_version` accepts `"0.2"` (and still `"0.1"`). Repository
