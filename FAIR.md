@@ -309,11 +309,11 @@ instructions in the [README](README.md#how-to-adopt-fairmd).
 See [`CITATION.cff`](CITATION.cff). In plain text:
 
 > Huzard, D. (2026). *fair.md — a portable, human- and machine-readable FAIR
-> manifest* (v0.3.0). Zenodo.
-> https://doi.org/10.5281/zenodo.21621349
+> manifest* (v0.3.1). GitHub and Zenodo.
+> https://github.com/Neuronautix/FAIR.md/releases/tag/v0.3.1
 
-Use the [v0.3.0 version DOI](https://doi.org/10.5281/zenodo.21621349) for
-reproducible citations of this release. Use the
+The v0.3.1 version DOI is assigned by Zenodo when the GitHub release is
+published and is then added to the release page and citation metadata. Use the
 [concept DOI](https://doi.org/10.5281/zenodo.20793968) when referring to the
 fair.md project across all versions.
 

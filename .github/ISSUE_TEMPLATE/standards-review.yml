@@ -36,7 +36,7 @@ body:
     id: version
     attributes:
       label: Version reviewed
-      value: v0.3.0
+      value: v0.3.1
     validations:
       required: true
   - type: textarea

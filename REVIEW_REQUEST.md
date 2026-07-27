@@ -1,7 +1,7 @@
 # Formal community review request: fair.md v0.3
 
 The fair.md project requests critical review of
-[release v0.3.0](https://github.com/Neuronautix/FAIR.md/releases/tag/v0.3.0).
+[release v0.3.1](https://github.com/Neuronautix/FAIR.md/releases/tag/v0.3.1).
 The proposal is a lightweight root `FAIR.md` declaration with evidence-backed
 FAIR results, explicit implementation profiles, and a separate Open Definition
 posture.

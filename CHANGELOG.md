@@ -8,6 +8,8 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.3.1] — 2026-07-27
+
 ### Added
 
 - Complete v0.3 worked packages for a generic dataset and an illustrative
@@ -19,10 +21,18 @@ This project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Changed
 
 - The root manifest now records Zenodo concept DOI
-  `10.5281/zenodo.20793968`; citation documentation and `CITATION.cff` identify
-  the exact v0.3.0 DOI `10.5281/zenodo.21621349`.
+  `10.5281/zenodo.20793968`; citation metadata now distinguishes the stable
+  concept identifier from version-specific release DOIs.
 - Default validation now includes complete nested v0.3 example packages and
   checks their root-relative evidence and data references.
+
+### Fixed
+
+- Validator tests now discover complete example packages recursively, matching
+  the command-line validator.
+- The ISA-Tab example now declares ENVO for environmental material and UO for
+  degree Celsius consistently across the Investigation, Study, manifest, and
+  assessment evidence.
 
 ## [0.3] — 2026-07-27
 

@@ -8,11 +8,11 @@ affordances live. It is a declaration, not certification.
 
 **Status: v0.3 — proposed convention**
 
-[![Zenodo version DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21621349.svg)](https://doi.org/10.5281/zenodo.21621349)
+[![Zenodo concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20793968.svg)](https://doi.org/10.5281/zenodo.20793968)
 [![Validate fair.md](https://github.com/Neuronautix/FAIR.md/actions/workflows/validate.yml/badge.svg)](https://github.com/Neuronautix/FAIR.md/actions/workflows/validate.yml)
 
 The current release is
-[`v0.3.0`](https://github.com/Neuronautix/FAIR.md/releases/tag/v0.3.0).
+[`v0.3.1`](https://github.com/Neuronautix/FAIR.md/releases/tag/v0.3.1).
 The project is seeking independent review through
 [formal community-review issue #4](https://github.com/Neuronautix/FAIR.md/issues/4).
 Neither structural validation nor a maintainer-authored assessment is FAIR
@@ -164,13 +164,14 @@ copy it to `FAIR.md`.
 
 ## Citation and persistent identifiers
 
-For an exact, reproducible citation of v0.3.0, use the
-[version DOI `10.5281/zenodo.21621349`](https://doi.org/10.5281/zenodo.21621349).
 For the evolving project across all releases, use the
 [concept DOI `10.5281/zenodo.20793968`](https://doi.org/10.5281/zenodo.20793968).
+The exact v0.3.1 version DOI is assigned when Zenodo ingests the
+[GitHub release](https://github.com/Neuronautix/FAIR.md/releases/tag/v0.3.1)
+and is added here after the record is published.
 Machine-readable citation metadata are provided in [`CITATION.cff`](CITATION.cff),
 and the expanded release description is tracked in
-[`docs/releases/v0.3.0.md`](docs/releases/v0.3.0.md).
+[`docs/releases/v0.3.1.md`](docs/releases/v0.3.1.md).
 
 Use the version DOI when the cited content must be reproducible. Use the concept
 DOI when referring to fair.md generally or when following the project across
@@ -267,7 +268,7 @@ comments and independent community review. See
 
 Manifest values use a two-part convention version during the 0.x proposal
 period. Release tags use full [Semantic Versioning](https://semver.org/) form
-(for example `v0.3.0`); migration rules are documented in the changelog.
+(for example `v0.3.1`); migration rules are documented in the changelog.
 
 ---
 
