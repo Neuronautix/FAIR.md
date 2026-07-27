@@ -8,7 +8,7 @@ affordances live. It is a declaration, not certification.
 
 **Status: v0.3 — proposed convention**
 
-[![Zenodo concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20793968.svg)](https://doi.org/10.5281/zenodo.20793968)
+[![Zenodo version DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21622631.svg)](https://doi.org/10.5281/zenodo.21622631)
 [![Validate fair.md](https://github.com/Neuronautix/FAIR.md/actions/workflows/validate.yml/badge.svg)](https://github.com/Neuronautix/FAIR.md/actions/workflows/validate.yml)
 
 The current release is
@@ -164,11 +164,10 @@ copy it to `FAIR.md`.
 
 ## Citation and persistent identifiers
 
+For an exact, reproducible citation of v0.3.1, use the
+[version DOI `10.5281/zenodo.21622631`](https://doi.org/10.5281/zenodo.21622631).
 For the evolving project across all releases, use the
 [concept DOI `10.5281/zenodo.20793968`](https://doi.org/10.5281/zenodo.20793968).
-The exact v0.3.1 version DOI is assigned when Zenodo ingests the
-[GitHub release](https://github.com/Neuronautix/FAIR.md/releases/tag/v0.3.1)
-and is added here after the record is published.
 Machine-readable citation metadata are provided in [`CITATION.cff`](CITATION.cff),
 and the expanded release description is tracked in
 [`docs/releases/v0.3.1.md`](docs/releases/v0.3.1.md).
