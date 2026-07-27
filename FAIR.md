@@ -11,7 +11,7 @@ identifiers:
   repository: "https://github.com/Neuronautix/FAIR.md"
   homepage: "https://github.com/Neuronautix/FAIR.md"
   canonical: "https://raw.githubusercontent.com/Neuronautix/FAIR.md/main/FAIR.md"
-  doi: null
+  doi: "10.5281/zenodo.20793968"
 maintainers:
   - name: "Damien Huzard, PhD"
     role: "author, specification editor, maintainer"
@@ -49,7 +49,7 @@ data_resources:
   - id: "examples"
     path: "/examples/"
     type: "reference fair.md manifests (worked examples)"
-    count: 1
+    count: 3
     identifier: "https://github.com/Neuronautix/FAIR.md/tree/main/examples"
     media_type: "text/markdown"
     metadata: ["/FAIR.md"]
@@ -96,9 +96,9 @@ fair_assessment:
       status: "partial"
       metric_ids: ["RDA-F1-01M", "RDA-F1-01D", "RDA-F1-02M", "RDA-F1-02D"]
       evidence:
-        - id: "https://github.com/Neuronautix/FAIR.md"
+        - id: "https://doi.org/10.5281/zenodo.20793968"
           type: "persistent-identifier"
-          note: "Globally unique repository URLs exist, but no archival DOI is minted."
+          note: "A concept DOI covers all releases; most component resources still lack independent PIDs."
     F2_rich_metadata:
       status: "partial"
       metric_ids: ["RDA-F2-01M"]
@@ -213,6 +213,10 @@ companions:
   codemeta: null
   ro_crate: "/fair-documented/ro-crate-metadata.json"
   source_registry: "/fair-documented/sources/registry.yaml"
+  contributing: "/CONTRIBUTING.md"
+  governance: "/GOVERNANCE.md"
+  code_of_conduct: "/CODE_OF_CONDUCT.md"
+  review_request: "/REVIEW_REQUEST.md"
 
 profiles:
   - name: "RDA FAIR Data Maturity Model"
@@ -261,7 +265,9 @@ This repo is the home of the **fair.md convention** — a proposed convention
 - the formal [specification](SPEC.md),
 - the JSON Schema for the YAML front matter ([`schema/`](schema/)),
 - a fill-in [template](template/fair.md),
-- a reference [example](examples/neuronautix.fair.md),
+- complete v0.3 [generic dataset](examples/generic-dataset/FAIR.md) and
+  [ISA-Tab](examples/isa-tab/FAIR.md) examples, plus a legacy
+  [Neuronautix snapshot](examples/neuronautix.fair.md),
 - a [validator](tools/validate_fair.py) wired into CI, and
 - a [FAIR-documented source pack](fair-documented/README.md) containing the
   authoritative source registry, standards crosswalk, evidence rules, ISA
@@ -269,11 +275,13 @@ This repo is the home of the **fair.md convention** — a proposed convention
 
 ## FAIR posture
 
-HTTPS access is strong, but the manifest intentionally records most principles
-as `partial`. There is no archival DOI, research catalog record, independent
-metadata-retention commitment, complete semantic export, formal PROV-O graph, or
-community-approved FAIR Implementation Profile. The evidence attached to each
-result identifies what exists and what remains missing.
+HTTPS access is strong and releases are archived under the concept DOI
+[10.5281/zenodo.20793968](https://doi.org/10.5281/zenodo.20793968), but the
+manifest intentionally records most principles as `partial`. There is no
+research catalog record, independent metadata-retention commitment, complete
+semantic export, formal PROV-O graph, or community-approved FAIR Implementation
+Profile. The evidence attached to each result identifies what exists and what
+remains missing.
 
 FAIR and openness are separate. The repository is openly accessible and uses
 machine-readable open formats, but its single Apache-2.0 declaration does not yet
@@ -301,7 +309,13 @@ instructions in the [README](README.md#how-to-adopt-fairmd).
 See [`CITATION.cff`](CITATION.cff). In plain text:
 
 > Huzard, D. (2026). *fair.md — a portable, human- and machine-readable FAIR
-> manifest* (v0.3). https://github.com/Neuronautix/FAIR.md
+> manifest* (v0.3.0). Zenodo.
+> https://doi.org/10.5281/zenodo.21621349
+
+Use the [v0.3.0 version DOI](https://doi.org/10.5281/zenodo.21621349) for
+reproducible citations of this release. Use the
+[concept DOI](https://doi.org/10.5281/zenodo.20793968) when referring to the
+fair.md project across all versions.
 
 ## Changelog
 

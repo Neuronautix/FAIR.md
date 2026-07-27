@@ -1,0 +1,3 @@
+Sample Name	Protocol REF	Parameter Value[instrument model]	Date	Raw Data File
+sample-A	temperature measurement	Example Sensor	2026-07-01	data/measurements.csv
+sample-B	temperature measurement	Example Sensor	2026-07-01	data/measurements.csv

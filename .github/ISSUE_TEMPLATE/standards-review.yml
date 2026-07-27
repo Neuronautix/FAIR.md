@@ -1,0 +1,71 @@
+name: Standards and community review
+description: Submit a structured review of fair.md from a FAIR, standards, repository, or scientific perspective.
+title: "[Review]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reviewing fair.md. Please state whether the response is personal expertise or an official organizational position.
+  - type: dropdown
+    id: perspective
+    attributes:
+      label: Review perspective
+      options:
+        - GO FAIR / FAIR Implementation Profiles
+        - FAIRsharing / standards registry
+        - RDA FAIR assessment
+        - RO-Crate
+        - ISA Tools / ISA-Tab / ISA-JSON
+        - Research data stewardship
+        - Scientific user
+        - Repository or infrastructure operator
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: capacity
+    attributes:
+      label: Capacity
+      options:
+        - Personal expertise
+        - Official organizational response
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version reviewed
+      value: v0.3.0
+    validations:
+      required: true
+  - type: textarea
+    id: strengths
+    attributes:
+      label: What works well?
+    validations:
+      required: true
+  - type: textarea
+    id: concerns
+    attributes:
+      label: Concerns or blockers
+      description: Include affected fields or sections and supporting sources where possible.
+    validations:
+      required: true
+  - type: textarea
+    id: changes
+    attributes:
+      label: Recommended changes
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Standards, evidence, or implementation experience
+  - type: checkboxes
+    id: conduct
+    attributes:
+      label: Participation
+      options:
+        - label: I agree to follow the repository Code of Conduct.
+          required: true

@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org/",
+  "@id": "https://raw.githubusercontent.com/Neuronautix/FAIR.md/main/examples/generic-dataset/data/observations.csv",
+  "@type": "Dataset",
+  "name": "Synthetic field observations",
+  "description": "Three synthetic temperature observations used by the fair.md generic v0.3 example.",
+  "datePublished": "2026-07-27",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "isBasedOn": "https://github.com/Neuronautix/FAIR.md",
+  "distribution": {
+    "@type": "DataDownload",
+    "contentUrl": "https://raw.githubusercontent.com/Neuronautix/FAIR.md/main/examples/generic-dataset/data/observations.csv",
+    "encodingFormat": "text/csv"
+  }
+}

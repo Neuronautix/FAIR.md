@@ -138,8 +138,27 @@ v0.2 worked snapshot is included at
 [`examples/neuronautix.fair.md`](examples/neuronautix.fair.md). It is not
 asserted to mirror the current live site.
 
+Two complete v0.3 packages demonstrate resource-level metadata and
+evidence-backed assessment:
+
+- [`examples/generic-dataset/FAIR.md`](examples/generic-dataset/FAIR.md) for a
+  small, domain-neutral tabular dataset.
+- [`examples/isa-tab/FAIR.md`](examples/isa-tab/FAIR.md) for an illustrative
+  Investigation–Study–Assay project. It declares ISA-Tab alignment without
+  claiming external validation or ISA community endorsement.
+
 The fill-in source remains at [`template/fair.md`](template/fair.md); adopters
 copy it to `FAIR.md`.
+
+---
+
+## Citation and persistent identifiers
+
+For an exact, reproducible citation of v0.3.0, use the
+[version DOI `10.5281/zenodo.21621349`](https://doi.org/10.5281/zenodo.21621349).
+For the evolving project across all releases, use the
+[concept DOI `10.5281/zenodo.20793968`](https://doi.org/10.5281/zenodo.20793968).
+Machine-readable citation metadata are provided in [`CITATION.cff`](CITATION.cff).
 
 ---
 
@@ -192,13 +211,11 @@ The same check runs in CI on every push and pull request
 ## Contributing
 
 This is a proposed convention, not yet a standard. Feedback, issues, and pull
-requests are welcome:
-
-- Open an issue to discuss field additions, naming, or alignment with existing
-  standards.
-- Submit a PR with a worked `examples/` entry to show fair.md in a new domain.
-- Reference the formal spec in SPEC.md when proposing changes — keep changes
-  backward-compatible within the 0.x series.
+requests are welcome. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the
+development workflow, [`GOVERNANCE.md`](GOVERNANCE.md) for change-approval
+rules, [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) for participation standards,
+and [`REVIEW_REQUEST.md`](REVIEW_REQUEST.md) for the formal community-review
+questions.
 
 Manifest values use a two-part convention version during the 0.x proposal
 period. Release tags use full [Semantic Versioning](https://semver.org/) form
