@@ -25,11 +25,11 @@ supported.
 
 ### Changed
 
-- Renamed the canonical root manifest from `FAIR.md` to the specification's
-  required lowercase `fair.md`.
+- Confirmed `FAIR.md` as the canonical root manifest and aligned discovery,
+  validation, examples, and documentation on its exact case.
 - Replaced unsupported repository-wide positive claims with evidence-backed,
   conservative results.
-- Reclassified `/.well-known/fair.md` as experimental until an RFC 8615
+- Reclassified `/.well-known/FAIR.md` as experimental until an RFC 8615
   registration exists.
 - CI now validates the schema and runs the test suite before validating manifests.
 

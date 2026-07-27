@@ -43,12 +43,12 @@ https://raw.githubusercontent.com/<org>/<repo>/main/FAIR.md
 A deployment may experiment with:
 
 ```
-https://<domain>/.well-known/fair.md
+https://<domain>/.well-known/FAIR.md
 ```
 
 redirecting to `https://<domain>/FAIR.md`, but this is **not a normative
-discovery mechanism**. `fair.md` is not currently registered in the IANA
-Well-Known URI registry. Implementers MUST NOT present `/.well-known/fair.md` as
+discovery mechanism**. `FAIR.md` is not currently registered in the IANA
+Well-Known URI registry. Implementers MUST NOT present `/.well-known/FAIR.md` as
 standardized unless it is registered under RFC 8615.
 
 ### 2.3 Content-Type

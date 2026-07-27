@@ -130,17 +130,16 @@ and (e) points to heavier machine-readable companions.
 
 ## Worked example and self-manifest
 
-The Neuronautix knowledge base originally inspired the convention:
+The canonical reference implementation is this repository's root
+[`FAIR.md`](FAIR.md), served from its exact-case raw URL.
 
-**<https://neuronautix.com/fair.md>**
-
-A legacy v0.2 worked snapshot is included at
+The Neuronautix knowledge base originally inspired the convention. A legacy
+v0.2 worked snapshot is included at
 [`examples/neuronautix.fair.md`](examples/neuronautix.fair.md). It is not
 asserted to mirror the current live site.
 
-This repository also dogfoods the convention on itself: its own conformant
-manifest is at [`FAIR.md`](FAIR.md), and the fill-in template lives at
-[`template/fair.md`](template/fair.md).
+The fill-in source remains at [`template/fair.md`](template/fair.md); adopters
+copy it to `FAIR.md`.
 
 ---
 
@@ -151,7 +150,7 @@ manifest is at [`FAIR.md`](FAIR.md), and the fill-in template lives at
 2. **Fill in** the YAML front matter with your project's values. Be honest in
    `fair_assessment` — `partial` and `planned` are features, not failures.
 3. **Serve** it at `https://yourdomain/FAIR.md`. Do not present
-   `/.well-known/fair.md` as standardized unless it is registered under RFC 8615.
+   `/.well-known/FAIR.md` as standardized unless it is registered under RFC 8615.
 4. **Add companions** you already have (`CITATION.cff` is the cheapest
    high-value next step; `codemeta.json` for software; RO-Crate for packaged
    objects).

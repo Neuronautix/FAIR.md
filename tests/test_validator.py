@@ -28,7 +28,7 @@ class ValidatorTests(unittest.TestCase):
         cls.validator = Draft202012Validator(
             schema, format_checker=FormatChecker()
         )
-        text = (ROOT / "fair.md").read_text(encoding="utf-8")
+        text = (ROOT / "FAIR.md").read_text(encoding="utf-8")
         yaml_text, _ = validate_fair.split_front_matter(text)
         cls.valid_v03 = validate_fair.yaml.load(
             yaml_text, Loader=validate_fair.UniqueKeyLoader
@@ -38,7 +38,7 @@ class ValidatorTests(unittest.TestCase):
         return list(self.validator.iter_errors(data))
 
     def test_repository_manifest_is_valid(self):
-        errors, _ = validate_fair.validate_file(ROOT / "fair.md", self.validator)
+        errors, _ = validate_fair.validate_file(ROOT / "FAIR.md", self.validator)
         self.assertEqual([], errors)
 
     def test_real_calendar_date_is_enforced(self):
@@ -121,7 +121,7 @@ prose
     def test_missing_local_reference_fails_for_repository_manifest(self):
         data = copy.deepcopy(self.valid_v03)
         data["companions"]["x_missing"] = "/DOES-NOT-EXIST"
-        errors = validate_fair.local_reference_errors(data, ROOT / "fair.md")
+        errors = validate_fair.local_reference_errors(data, ROOT / "FAIR.md")
         self.assertTrue(any("does not exist with exact case" in error for error in errors))
 
 

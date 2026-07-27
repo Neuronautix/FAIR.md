@@ -16,7 +16,7 @@ description: >
 identifiers:
   repository: "https://github.com/Neuronautix/neuronautix.com"
   homepage: "https://neuronautix.com"
-  canonical: "https://raw.githubusercontent.com/Neuronautix/FAIR.md/main/examples/neuronautix.fair.md"
+  canonical: "https://neuronautix.com/FAIR.md"
   doi: null            # not yet minted — recommend archiving releases to Zenodo for a DOI
 maintainers:
   - name: "Damien Huzard, PhD"
@@ -135,7 +135,7 @@ it is.
 
 ## Format specification (v0.2)
 
-A `fair.md` file is Markdown with a YAML front-matter block. Required keys:
+A `FAIR.md` file is Markdown with a YAML front-matter block. Required keys:
 
 | Key | Meaning |
 |---|---|
@@ -156,11 +156,11 @@ principles so that automated FAIR assessment tools can map them directly.
 
 ## How to adopt fair.md in your repository
 
-1. Copy this file to the root of your repo / site as `fair.md`.
+1. Copy this file to the root of your repo / site as `FAIR.md`.
 2. Replace the YAML with your project's values. **Be honest in
    `fair_assessment`** — `partial` and `planned` are features, not failures;
    the point is a truthful, improvable baseline.
-3. Serve it at `https://yourdomain/fair.md`. Treat `/.well-known/fair.md` as
+3. Serve it at `https://yourdomain/FAIR.md`. Treat `/.well-known/FAIR.md` as
    experimental unless it is registered under RFC 8615.
 4. Add the companions you can (`CITATION.cff` is the cheapest high-value next
    step; `codemeta.json` for software; RO-Crate for packaged objects).

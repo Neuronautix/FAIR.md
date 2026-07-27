@@ -12,8 +12,8 @@
    and contradictory openness claims.
 5. Keep an authoritative source registry with version, retrieval date, license,
    copy policy, and checksums for any vendored originals.
-6. Use the exact lowercase root filename `fair.md`.
-7. Treat unregistered `/.well-known/fair.md` discovery as experimental, not
+6. Use the exact canonical root filename `FAIR.md`.
+7. Treat unregistered `/.well-known/FAIR.md` discovery as experimental, not
    normative.
 
 ### P1 — machine actionability
@@ -40,7 +40,7 @@
   and a reproducible test.
 - **FAIR diff:** pull requests show which target, criterion, evidence, or
   implementation choice improved or regressed.
-- **One-graph multi-export:** generate `fair.md`, RO-Crate, DCAT, DataCite,
+- **One-graph multi-export:** generate `FAIR.md`, RO-Crate, DCAT, DataCite,
   Signposting, and citation metadata without drift.
 - **Source-to-claim lineage:** trace a field or statement to its authoritative
   source, exact locator, checksum, transformation, and reviewer.
@@ -63,4 +63,3 @@
 - Every local path declared by this repository exists with exact case.
 - The package remains valid JSON/YAML and the automated test suite exercises
   both passing and failing fixtures.
-

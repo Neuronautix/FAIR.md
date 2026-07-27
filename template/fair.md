@@ -1,13 +1,13 @@
 ---
 # fair.md — a portable, human- and machine-readable FAIR manifest for a repository
 # Proposed convention (v0.3). Specification: https://github.com/Neuronautix/FAIR.md
-# Reference implementation: https://neuronautix.com/fair.md
+# Reference implementation: https://raw.githubusercontent.com/Neuronautix/FAIR.md/main/FAIR.md
 #
 # HOW TO USE THIS TEMPLATE
-# 1. Copy this file to the root of your repository/site as `fair.md`.
+# 1. Copy this file to the root of your repository/site as `FAIR.md`.
 # 2. Replace every <PLACEHOLDER> with your project's values.
 # 3. Attach evidence to every FAIR result; bare statuses are invalid in v0.3.
-# 4. Serve at https://yourdomain/fair.md.
+# 4. Serve at https://yourdomain/FAIR.md.
 # 5. Review periodically; update last_reviewed each time.
 
 fair_md_version: "0.3"
@@ -19,7 +19,7 @@ description: >
 identifiers:
   repository: "<https://github.com/yourorg/yourrepo>"
   homepage: "<https://yourproject.example.org>"
-  canonical: "<https://yourproject.example.org/fair.md>"
+  canonical: "<https://yourproject.example.org/FAIR.md>"
   doi: null   # replace with "10.xxxx/xxxxx" once minted; null is valid
 
 maintainers:
@@ -160,7 +160,7 @@ is for people.
 
 It is a **proposed convention (v0.3)**. See the
 [fair.md specification](https://github.com/Neuronautix/FAIR.md) and the
-[reference implementation](https://neuronautix.com/fair.md).
+[reference implementation](https://raw.githubusercontent.com/Neuronautix/FAIR.md/main/FAIR.md).
 
 ## What this repository declares
 

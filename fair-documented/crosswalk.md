@@ -32,6 +32,5 @@ evidence-backed assessment determines whether the implementation works.
   distribution, access, provenance, or preservation metadata.
 - Apache-2.0 is appropriate for software. Documentation, data, database rights,
   and third-party content may need separate licenses and scopes.
-- `/.well-known/fair.md` is not currently in the IANA registry; it must not be a
+- `/.well-known/FAIR.md` is not currently in the IANA registry; it must not be a
   normative discovery requirement unless registered under RFC 8615.
-

@@ -7,7 +7,7 @@ the conformance rules and non-blocking warnings from SPEC.md Section 6.
 Usage:
     python tools/validate_fair.py [FILE ...]
 
-With no arguments, validates this repo's own manifest (fair.md) and
+With no arguments, validates this repo's own manifest (FAIR.md) and
 examples/*.fair.md. The fill-in template at template/fair.md is intentionally
 non-conformant (it contains <PLACEHOLDER> values) and is not validated.
 
@@ -201,7 +201,7 @@ def exact_local_path_exists(root, reference):
 def local_reference_errors(data, manifest_path):
     """Validate this repository's own root-relative declarations."""
     path = Path(manifest_path).resolve()
-    if path.parent != ROOT or path.name != "fair.md":
+    if path.parent != ROOT or path.name != "FAIR.md":
         return []
 
     references = []
@@ -268,7 +268,7 @@ def validate_file(path, validator):
 
 
 def main(argv):
-    default_paths = [str(ROOT / "fair.md")] + sorted(
+    default_paths = [str(ROOT / "FAIR.md")] + sorted(
         glob.glob(str(ROOT / "examples" / "*.fair.md"))
     )
     paths = argv or default_paths
